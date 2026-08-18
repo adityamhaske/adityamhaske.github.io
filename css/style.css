@@ -296,9 +296,88 @@ section:last-of-type {
 }
 
 /* GitHub Contributions */
-.calendar .sr-only {
-    display: none !important;
+.calendar {
+    --color-calendar-graph-day-bg: #ebedf0;
+    --color-calendar-graph-day-L1-bg: #9be9a8;
+    --color-calendar-graph-day-L2-bg: #40c463;
+    --color-calendar-graph-day-L3-bg: #30a14e;
+    --color-calendar-graph-day-L4-bg: #216e39;
+    border: 1px solid var(--border-color);
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    background: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: auto;
 }
+
+.calendar-loading {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.calendar-graph {
+    min-width: 700px;
+}
+
+.calendar rect.ContributionCalendar-day {
+    shape-rendering: geometricPrecision;
+    rx: 2px;
+    ry: 2px;
+    transition: opacity 0.15s ease;
+}
+
+.calendar rect.ContributionCalendar-day:hover {
+    stroke: var(--text-primary);
+    stroke-width: 1px;
+}
+
+.calendar rect.ContributionCalendar-day[data-level="0"] { fill: var(--color-calendar-graph-day-bg); }
+.calendar rect.ContributionCalendar-day[data-level="1"] { fill: var(--color-calendar-graph-day-L1-bg); }
+.calendar rect.ContributionCalendar-day[data-level="2"] { fill: var(--color-calendar-graph-day-L2-bg); }
+.calendar rect.ContributionCalendar-day[data-level="3"] { fill: var(--color-calendar-graph-day-L3-bg); }
+.calendar rect.ContributionCalendar-day[data-level="4"] { fill: var(--color-calendar-graph-day-L4-bg); }
+
+.calendar .ContributionCalendar-label {
+    fill: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 9px;
+}
+
+.calendar-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.calendar-legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.calendar-legend .legend-box {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.calendar-legend .legend-box[data-level="0"] { background-color: var(--color-calendar-graph-day-bg); }
+.calendar-legend .legend-box[data-level="1"] { background-color: var(--color-calendar-graph-day-L1-bg); }
+.calendar-legend .legend-box[data-level="2"] { background-color: var(--color-calendar-graph-day-L2-bg); }
+.calendar-legend .legend-box[data-level="3"] { background-color: var(--color-calendar-graph-day-L3-bg); }
+.calendar-legend .legend-box[data-level="4"] { background-color: var(--color-calendar-graph-day-L4-bg); }
 
 /* All Projects */
 .filter-controls {

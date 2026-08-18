@@ -126,34 +126,11 @@
                 <span class="section-number">02</span>
                 <h2>GitHub Contributions <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">(2026)</span></h2>
             </div>
-            <!-- Include the github-calendar CSS and JS -->
-            <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
-            <style>
-                /* Hide the 'Skip to contributions year list' screen reader link that gets rendered */
-                .calendar .sr-only { display: none !important; }
-                .calendar a[href^="#year-link-"] { display: none !important; }
-                .calendar h2.f4.text-normal.mb-2 { display: none !important; } /* hides "X contributions in the last year" if needed, but we keep it clean */
-                .calendar .float-left.text-normal { display: none !important; } /* hiding random GitHub text */
-            </style>
-            <div class="calendar" style="border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 8px; background: var(--bg-color); color: var(--text-main);">
-                Loading contribution data...
+            <div class="calendar" id="github-calendar">
+                <div class="calendar-loading">
+                    Loading contribution data...
+                </div>
             </div>
-            <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
-            <script>
-                // Initialize the calendar for user 'adityamhaske' using a custom proxy to fetch only 2026
-                GitHubCalendar(".calendar", "adityamhaske", { 
-                    responsive: true, 
-                    global_stats: false,
-                    proxy (username) {
-                        return "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://github.com/users/" + username + "/contributions?from=2026-01-01&to=2026-12-31");
-                    }
-                }).catch(e => {
-                    // Fallback to default if proxy fails
-                    console.error("Custom proxy failed, falling back to default.", e);
-                    document.querySelector('.calendar').innerHTML = "Loading contribution data...";
-                    GitHubCalendar(".calendar", "adityamhaske", { responsive: true, global_stats: false });
-                });
-            </script>
         </section>
 
         <section id="all-projects" class="section-all-projects">
