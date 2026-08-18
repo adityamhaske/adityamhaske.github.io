@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Mhaske | Open Source & Research</title>
+    <meta name="description" content="Open-source projects and research publications by Aditya Mhaske.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>A</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="site-title">ADITYA MHASKE</div>
+            <nav class="site-nav">
+                <a href="#featured-projects">Projects</a>
+                <a href="#research">Research</a>
+                <a href="#contact">Contact</a>
+                <span class="nav-separator">|</span>
+                <a href="https://github.com/adityamhaske" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                <a href="https://adityamhaske.com" target="_blank" rel="noopener noreferrer" class="portfolio-link" title="Full portfolio">Portfolio ↗</a>
+                <span class="nav-separator">|</span>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-label">Dark</span>
+                    <div class="toggle-track">
+                        <div class="toggle-thumb"></div>
+                    </div>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro" class="intro-strip" style="display: flex; align-items: center; justify-content: space-between; gap: 2rem;">
+            <div class="intro-text">
+                <h2 style="margin-bottom: 0.5rem; font-size: 2.2rem; font-weight: 700; color: var(--text-color);">Hello, I am Aditya Mhaske!</h2>
+                <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text-color); margin-bottom: 0.5rem;">Software engineer specializing in scalable systems and AI architecture.</p>
+                <p style="font-size: 1.15rem; line-height: 1.6; color: var(--text-color);">This portfolio highlights selected engineering projects, technical research, and production systems I’ve built from 2018 to the present.</p>
+                <p class="disclaimer" style="margin-top: 1rem;">For my full work experience and background, see the <a href="https://adityamhaske.com" target="_blank" rel="noopener noreferrer">full portfolio →</a></p>
+            </div>
+            <img src="img/animal_coder_sticker.jpg" alt="Animal coder sticker" style="width: 140px; height: 140px; border-radius: 16px; object-fit: cover; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+        </section>
+
+        <section id="featured-projects" class="section-featured">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Featured Projects</h2>
+            </div>
+            <div class="featured-grid">
+                <article class="featured-card">
+                    <h3 class="repo-name"><a href="https://adityamhaske.github.io/Multi-Agent-Research-Assistant/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Multi-Agent-Research-Assistant</a></h3>
+                    <p class="repo-desc">Open-source multi-agent research platform — Planner, Researcher, Critic & Synthesizer agents with human-in-the-loop approval, per-claim citations, and BYOK support. Built with LangGraph, FastAPI, Next.js.</p>
+                    <div class="repo-meta">
+                        <span class="tag">Python</span>
+                        <span class="tag">AI/ML</span>
+                    </div>
+                    <div class="repo-links">
+                        <a href="https://github.com/adityamhaske/Multi-Agent-Research-Assistant" target="_blank" rel="noopener noreferrer">Repo ↗</a>
+                        <a href="https://adityamhaske.github.io/Multi-Agent-Research-Assistant/" target="_blank" rel="noopener noreferrer">Docs ↗</a>
+                    </div>
+                </article>
+                <article class="featured-card">
+                    <h3 class="repo-name"><a href="https://github.com/adityamhaske/agent-arena" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">agent-arena</a></h3>
+                    <p class="repo-desc">An evaluation harness to rigorously compare multi-agent architectures (single-agent, supervisor-worker, peer-to-peer, debate) using shared structured tracing.</p>
+                    <div class="repo-meta">
+                        <span class="tag">Python</span>
+                        <span class="tag">AI/ML</span>
+                    </div>
+                    <div class="repo-links">
+                        <a href="https://github.com/adityamhaske/agent-arena" target="_blank" rel="noopener noreferrer">Repo ↗</a>
+                    </div>
+                </article>
+                <article class="featured-card">
+                    <h3 class="repo-name"><a href="https://github.com/adityamhaske/AI-Co-Pilot-for-SaaS-Analytics-Platform" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">AI-Co-Pilot-for-SaaS-Analytics-Platform</a></h3>
+                    <p class="repo-desc">Built an AI co-pilot enabling natural-language access to a SaaS analytics dashboard via FastAPI and Anthropic function calling.</p>
+                    <div class="repo-meta">
+                        <span class="tag">Python</span>
+                        <span class="tag">Backend</span>
+                    </div>
+                    <div class="repo-links">
+                        <a href="https://github.com/adityamhaske/AI-Co-Pilot-for-SaaS-Analytics-Platform" target="_blank" rel="noopener noreferrer">Repo ↗</a>
+                    </div>
+                </article>
+                <article class="featured-card">
+                    <h3 class="repo-name"><a href="https://github.com/adityamhaske/IndusAI" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">IndusAI</a></h3>
+                    <p class="repo-desc">Engineered an industrial AI assistant for PLC fault log analysis; migrated to Google Cloud (Gemini Flash, Qdrant, Cloud Run, Firebase).</p>
+                    <div class="repo-meta">
+                        <span class="tag">Python</span>
+                        <span class="tag">AI/ML</span>
+                    </div>
+                    <div class="repo-links">
+                        <a href="https://github.com/adityamhaske/IndusAI" target="_blank" rel="noopener noreferrer">Repo ↗</a>
+                    </div>
+                </article>
+                <article class="featured-card">
+                    <h3 class="repo-name"><a href="https://github.com/adityamhaske/AffectiSense" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">AffectiSense</a></h3>
+                    <p class="repo-desc">NeuroSense AI - An intelligent, modality-resilient mental health assessment platform fusing neurophysiological (EEG), vocal biomarker (audio), and behavioral (facial/video) signals.</p>
+                    <div class="repo-meta">
+                        <span class="tag">Jupyter Notebook</span>
+                        <span class="tag">AI/ML</span>
+                    </div>
+                    <div class="repo-links">
+                        <a href="https://github.com/adityamhaske/AffectiSense" target="_blank" rel="noopener noreferrer">Repo ↗</a>
+                    </div>
+                </article>
+                <article class="featured-card">
+                    <h3 class="repo-name"><a href="https://github.com/adityamhaske/Stock-Prediction-of-Deutsche-Borse-Using-AWS" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Stock-Prediction-of-Deutsche-Borse-Using-AWS</a></h3>
+                    <p class="repo-desc">Group project implemented using AWS and performed Data Preprocessing, Wrangling and Modeling</p>
+                    <div class="repo-meta">
+                        <span class="tag">Jupyter Notebook</span>
+                        <span class="tag">Data Science</span>
+                    </div>
+                    <div class="repo-links">
+                        <a href="https://github.com/adityamhaske/Stock-Prediction-of-Deutsche-Borse-Using-AWS" target="_blank" rel="noopener noreferrer">Repo ↗</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contributions" class="section-contributions">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>GitHub Contributions <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">(2026)</span></h2>
+            </div>
+            <!-- Include the github-calendar CSS and JS -->
+            <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+            <style>
+                /* Hide the 'Skip to contributions year list' screen reader link that gets rendered */
+                .calendar .sr-only { display: none !important; }
+                .calendar a[href^="#year-link-"] { display: none !important; }
+                .calendar h2.f4.text-normal.mb-2 { display: none !important; } /* hides "X contributions in the last year" if needed, but we keep it clean */
+                .calendar .float-left.text-normal { display: none !important; } /* hiding random GitHub text */
+            </style>
+            <div class="calendar" style="border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 8px; background: var(--bg-color); color: var(--text-main);">
+                Loading contribution data...
+            </div>
+            <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+            <script>
+                // Initialize the calendar for user 'adityamhaske' using a custom proxy to fetch only 2026
+                GitHubCalendar(".calendar", "adityamhaske", { 
+                    responsive: true, 
+                    global_stats: false,
+                    proxy (username) {
+                        return "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://github.com/users/" + username + "/contributions?from=2026-01-01&to=2026-12-31");
+                    }
+                }).catch(e => {
+                    // Fallback to default if proxy fails
+                    console.error("Custom proxy failed, falling back to default.", e);
+                    document.querySelector('.calendar').innerHTML = "Loading contribution data...";
+                    GitHubCalendar(".calendar", "adityamhaske", { responsive: true, global_stats: false });
+                });
+            </script>
+        </section>
+
+        <section id="all-projects" class="section-all-projects">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>All Projects</h2>
+            </div>
+            
+            <div class="filter-controls">
+                <input type="text" id="project-search" placeholder="Search repositories..." aria-label="Search repositories">
+                <div class="filter-tags" id="filter-tags">
+                    <button class="filter-btn active" data-tag="all">All</button>
+                    <!-- JavaScript will populate other tags dynamically based on the hardcoded JSON -->
+                </div>
+            </div>
+
+            <div class="project-list-container">
+                <table class="project-table">
+                    <thead>
+                        <tr>
+                            <th>Repository</th>
+                            <th>Description</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody id="project-list-body">
+                        <!-- JavaScript will populate this -->
+                    </tbody>
+                </table>
+                <div id="no-results" class="no-results hidden">No projects match your filters.</div>
+            </div>
+        </section>
+
+        <section id="research" class="section-research">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Research & Publications</h2>
+                <a href="https://scholar.google.com/citations?user=klyUNDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="scholar-link">Google Scholar Profile ↗</a>
+            </div>
+            <div class="filter-controls">
+                <div class="filter-tags" id="research-filters">
+                    <button class="filter-btn active" data-type="all">All</button>
+                    <button class="filter-btn" data-type="research">Research Papers</button>
+                    <button class="filter-btn" data-type="patent">Patents</button>
+                </div>
+            </div>
+
+            <table class="research-table">
+                <tbody id="research-list-body">
+                    <tr class="research-row" data-type="patent">
+                        <td class="research-index-col">[01]</td>
+                        <td class="research-title-col">
+                            <h3 class="research-title">Smart Glasses for Monocular Vision</h3>
+                            <div class="research-venue"><strong>Patent Number:</strong> IN 202021034153 · Filed Aug 10, 2020</div>
+                            <p class="research-summary">Patent covering smart glasses designed to assist monocular vision to estimate depth.</p>
+                        </td>
+                        <td class="research-link-col">
+                            <a href="https://scholar.google.com/citations?user=klyUNDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+                        </td>
+                    </tr>
+
+                    <tr class="research-row" data-type="patent">
+                        <td class="research-index-col">[02]</td>
+                        <td class="research-title-col">
+                            <h3 class="research-title">Road Conditions and Obstacle Indication System</h3>
+                            <div class="research-venue"><strong>Patent Number:</strong> IN 202021009028 · Filed Mar 3, 2020</div>
+                            <p class="research-summary">Patent outlining a system for autonomous obstacle indication and road condition assessment.</p>
+                        </td>
+                        <td class="research-link-col">
+                            <a href="https://scholar.google.com/citations?user=klyUNDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+                        </td>
+                    </tr>
+
+                    <tr class="research-row" data-type="research">
+                        <td class="research-index-col">[03]</td>
+                        <td class="research-title-col">
+                            <h3 class="research-title">EEG Based Depression Detection Using Ensemble Approach</h3>
+                            <div class="research-venue">International Conference on Applied Intelligence and Sustainable Computing</div>
+                            <p class="research-summary">Explores ensemble machine learning methods applied to EEG signals for detecting markers of depression.</p>
+                        </td>
+                        <td class="research-link-col">
+                            <a href="https://scholar.google.com/citations?user=klyUNDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">IEEE Link ↗</a>
+                            <a href="https://github.com/adityamhaske/AffectiSense" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+                        </td>
+                    </tr>
+
+                    <tr class="research-row" data-type="research">
+                        <td class="research-index-col">[04]</td>
+                        <td class="research-title-col">
+                            <h3 class="research-title">A Survey: Feature Extraction Techniques And ML Models For Depression Analysis</h3>
+                            <div class="research-venue">12th Intl. Conf. on Computing, Communication, and Networking Technologies</div>
+                            <p class="research-summary">Comprehensive review of feature extraction techniques mapping human behavior to depression markers.</p>
+                        </td>
+                        <td class="research-link-col">
+                            <a href="https://scholar.google.com/citations?user=klyUNDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">IEEE Link ↗</a>
+                            <a href="https://github.com/adityamhaske/Multimodal_Depression_Analysis" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+                        </td>
+                    </tr>
+
+                    <tr class="research-row" data-type="research">
+                        <td class="research-index-col">[05]</td>
+                        <td class="research-title-col">
+                            <h3 class="research-title">Cardiovascular Disease Prediction Using Machine Learning Models</h3>
+                            <div class="research-venue">IEEE Pune Section International Conference</div>
+                            <p class="research-summary">Evaluation of various machine learning models to accurately predict cardiovascular disease risk factors.</p>
+                        </td>
+                        <td class="research-link-col">
+                            <a href="https://scholar.google.com/citations?user=klyUNDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">IEEE Link ↗</a>
+                            <a href="https://github.com/adityamhaske/Cardiovascular_disease_prediction" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+                        </td>
+                    </tr>
+
+                    <tr class="research-row" data-type="research">
+                        <td class="research-index-col">[06]</td>
+                        <td class="research-title-col">
+                            <h3 class="research-title">Road Conditions Indication and Autonomous Braking System</h3>
+                            <div class="research-venue">IEEE 3rd International Conference on Intelligent Sustainable Systems</div>
+                            <p class="research-summary">Describes the architecture and implementation of an autonomous braking system responsive to road conditions.</p>
+                        </td>
+                        <td class="research-link-col">
+                            <a href="https://scholar.google.com/citations?user=klyUNDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">IEEE Link ↗</a>
+                            <a href="https://github.com/adityamhaske" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+                        </td>
+                    </tr>
+
+                    <tr class="research-row" data-type="research">
+                        <td class="research-index-col">[07]</td>
+                        <td class="research-title-col">
+                            <h3 class="research-title">Smart Glasses to Assist Monocular Vision to Estimate Depth</h3>
+                            <div class="research-venue">IEEE International Conference for Innovation in Technology 2020, Bangalore</div>
+                            <p class="research-summary">Academic paper expanding on the patented depth-estimation smart glasses design for monocular vision assistance.</p>
+                        </td>
+                        <td class="research-link-col">
+                            <a href="https://scholar.google.com/citations?user=klyUNDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">IEEE Link ↗</a>
+                            <a href="https://github.com/adityamhaske" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="research-no-results" class="no-results hidden">No items match your filters.</div>
+        </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+        <div class="footer-links">
+            <a href="mailto:adityamh80@gmail.com">Email</a>
+            <a href="https://linkedin.com/in/adityamhaske" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/adityamhaske" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://scholar.google.com/citations?user=klyUNDAAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <a href="https://adityamhaske.com" target="_blank" rel="noopener noreferrer">Full Portfolio →</a>
+        </div>
+        <div class="footer-meta">
+            Built with static HTML & Vanilla JS • <span id="current-year">2026</span>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
