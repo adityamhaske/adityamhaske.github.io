@@ -1,237 +1,275 @@
 /**
  * Hardcoded project data.
- * Add new repositories here. Categories/tags are used for filtering.
+ * Categorized into 6 broad engineering domains.
  */
 const projectsData = [
     {
         "name": "Multi-Agent-Research-Assistant",
-        "description": "Open-source multi-agent research platform — Planner, Researcher, Critic & Synthesizer agents with human-in-the-loop approval, per-claim citations, and BYOK support. Built with LangGraph, FastAPI, Next.js.",
+        "category": "agents-llm",
+        "domainBadge": "AGENTIC DAG",
+        "badgeClass": "badge-agent",
+        "description": "Open-source multi-agent research platform with Planner, Researcher, Critic, and Synthesizer agents, human-in-the-loop validation, and per-claim citations.",
+        "stack": ["LangGraph", "FastAPI", "Next.js"],
         "url": "https://github.com/adityamhaske/Multi-Agent-Research-Assistant",
         "docsUrl": "https://adityamhaske.github.io/Multi-Agent-Research-Assistant/",
-        "isCoursework": false,
-        "tags": [
-            "Python"
-        ]
-    },
-    {
-        "name": "AI-Co-Pilot-for-SaaS-Analytics-Platform",
-        "description": "Built an AI co-pilot enabling natural-language access to a SaaS analytics dashboard via FastAPI and Anthropic function calling, mapping user queries to structured backend calls.",
-        "url": "https://github.com/adityamhaske/AI-Co-Pilot-for-SaaS-Analytics-Platform",
-        "isCoursework": false,
-        "tags": [
-            "Python"
-        ]
+        "isCoursework": false
     },
     {
         "name": "agent-arena",
-        "description": "Agent Arena: An evaluation harness to rigorously compare multi-agent architectures (single-agent, supervisor-worker, peer-to-peer, debate) using shared structured tracing.",
+        "category": "agents-llm",
+        "domainBadge": "EVALS & TRACING",
+        "badgeClass": "badge-agent",
+        "description": "Evaluation harness to empirically benchmark multi-agent topologies (Single-Agent, Supervisor-Worker, Peer-to-Peer, Debate) with structured telemetry.",
+        "stack": ["LangGraph", "LLM Evals", "Python"],
         "url": "https://github.com/adityamhaske/agent-arena",
-        "isCoursework": false,
-        "tags": [
-            "Python"
-        ]
+        "isCoursework": false
+    },
+    {
+        "name": "AI-Co-Pilot-for-SaaS-Analytics-Platform",
+        "category": "agents-llm",
+        "domainBadge": "NATURAL LANGUAGE AI",
+        "badgeClass": "badge-agent",
+        "description": "Natural-language AI co-pilot translating conversational analytics queries into structured backend API calls via Anthropic function calling.",
+        "stack": ["Anthropic API", "FastAPI", "Python"],
+        "url": "https://github.com/adityamhaske/AI-Co-Pilot-for-SaaS-Analytics-Platform",
+        "isCoursework": false
     },
     {
         "name": "IndusAI",
-        "description": "Engineered an industrial AI assistant for PLC fault log analysis; migrated to Google Cloud (Gemini Flash, Qdrant, Cloud Run, Firebase)",
+        "category": "agents-llm",
+        "domainBadge": "INDUSTRIAL RAG",
+        "badgeClass": "badge-agent",
+        "description": "Industrial AI assistant for PLC fault log analysis and diagnostics; architected GCP cloud migration with sub-second vector matching.",
+        "stack": ["Gemini Flash", "Qdrant", "Cloud Run"],
         "url": "https://github.com/adityamhaske/IndusAI",
-        "isCoursework": false,
-        "tags": [
-            "Python"
-        ]
-    },
-    {
-        "name": "AffectiSense",
-        "description": "NeuroSense AI - An intelligent, modality-resilient mental health assessment platform fusing neurophysiological (EEG), vocal biomarker (audio), and behavioral (facial/video) signals.",
-        "url": "https://github.com/adityamhaske/AffectiSense",
-        "isCoursework": false,
-        "tags": [
-            "Jupyter Notebook"
-        ]
-    },
-    {
-        "name": "Object-Detection-and-Localization",
-        "description": "Object Detection and Localization using Image processing and Machine learning Algorithms like YOLO",
-        "url": "https://github.com/adityamhaske/Object-Detection-and-Localization",
-        "isCoursework": false,
-        "tags": [
-            "Python"
-        ]
-    },
-    {
-        "name": "BMR-ML-Pipeline_DBMS",
-        "description": "ML Pipelines, DBMS using Oracle SQL, Tableau visualizations",
-        "url": "https://github.com/adityamhaske/BMR-ML-Pipeline_DBMS",
-        "isCoursework": false,
-        "tags": [
-            "Python"
-        ]
+        "isCoursework": false
     },
     {
         "name": "Kelley-LLM-NLP-Cross-Classified",
-        "description": "Sample work with Kelley School of Business as Data Scientist includes, NLP in Political Twitter Data, LLM with Customer understanding and Cross-Classified model for performance tracking",
+        "category": "agents-llm",
+        "domainBadge": "NLP & LLM",
+        "badgeClass": "badge-agent",
+        "description": "Data science and NLP research with Kelley School of Business, analyzing political Twitter text, customer intent models, and cross-classified tracking.",
+        "stack": ["LLM / NLP", "Python", "Jupyter"],
         "url": "https://github.com/adityamhaske/Kelley-LLM-NLP-Cross-Classified",
-        "isCoursework": false,
-        "tags": [
-            "Jupyter Notebook"
-        ]
+        "isCoursework": false
+    },
+    {
+        "name": "AffectiSense",
+        "category": "vision-multimodal",
+        "domainBadge": "MULTIMODAL AI",
+        "badgeClass": "",
+        "description": "NeuroSense AI — Multimodal mental health assessment platform fusing neurophysiological (EEG), vocal acoustic biomarker, and facial signals.",
+        "stack": ["PyTorch", "EEG Processing", "Python"],
+        "url": "https://github.com/adityamhaske/AffectiSense",
+        "isCoursework": false
     },
     {
         "name": "Multimodal_Depression_Analysis",
-        "description": "Multimodal System for Depression Analysis using Machine Learning Techniques by Observing Human Behaviour",
+        "category": "vision-multimodal",
+        "domainBadge": "MULTIMODAL AI",
+        "badgeClass": "",
+        "description": "Multimodal behavioral analysis platform combining facial micro-expression telemetry and acoustic signal processing for mental health markers.",
+        "stack": ["Multimodal AI", "Signal Proc", "Python"],
         "url": "https://github.com/adityamhaske/Multimodal_Depression_Analysis",
-        "isCoursework": false,
-        "tags": [
-            "Jupyter Notebook"
-        ]
+        "isCoursework": false
     },
     {
-        "name": "Stock-Prediction-of-Deutsche-Borse-Using-AWS",
-        "description": "Group project implemented using AWS and performed Data Preprocessing, Wrangling and Modeling",
-        "url": "https://github.com/adityamhaske/Stock-Prediction-of-Deutsche-Borse-Using-AWS",
-        "isCoursework": false,
-        "tags": [
-            "Jupyter Notebook"
-        ]
+        "name": "Object-Detection-and-Localization",
+        "category": "vision-multimodal",
+        "domainBadge": "COMPUTER VISION",
+        "badgeClass": "",
+        "description": "Real-time object detection and spatial localization pipeline utilizing custom YOLO models and low-latency computer vision routines.",
+        "stack": ["YOLO", "OpenCV", "Python"],
+        "url": "https://github.com/adityamhaske/Object-Detection-and-Localization",
+        "isCoursework": false
+    },
+    {
+        "name": "BMR-ML-Pipeline_DBMS",
+        "category": "ml-data",
+        "domainBadge": "DATA PIPELINE",
+        "badgeClass": "",
+        "description": "End-to-end ML data pipelines, relational database architecture in Oracle SQL, and business intelligence dashboards in Tableau.",
+        "stack": ["Oracle SQL", "Python", "Tableau"],
+        "url": "https://github.com/adityamhaske/BMR-ML-Pipeline_DBMS",
+        "isCoursework": false
     },
     {
         "name": "Cardiovascular_disease_prediction",
-        "description": "Machine Learning Project to predict Heart Disease using Different Models and Analysis ",
+        "category": "ml-data",
+        "domainBadge": "PREDICTIVE ML",
+        "badgeClass": "",
+        "description": "Supervised machine learning pipeline evaluating classification model ensembles for high-sensitivity cardiovascular disease risk prediction.",
+        "stack": ["Scikit-Learn", "Python", "Jupyter"],
         "url": "https://github.com/adityamhaske/Cardiovascular_disease_prediction",
-        "isCoursework": false,
-        "tags": [
-            "Jupyter Notebook"
-        ]
+        "isCoursework": false
+    },
+    {
+        "name": "Stock-Prediction-of-Deutsche-Borse-Using-AWS",
+        "category": "ml-data",
+        "domainBadge": "CLOUD ML",
+        "badgeClass": "",
+        "description": "Distributed data preprocessing, wrangling, and financial forecasting pipeline for Deutsche Börse stock data deployed on AWS.",
+        "stack": ["AWS", "Time-Series ML", "Python"],
+        "url": "https://github.com/adityamhaske/Stock-Prediction-of-Deutsche-Borse-Using-AWS",
+        "isCoursework": false
     },
     {
         "name": "Business-Location-Recommendation-System",
-        "description": "IBM Coursera Data Science - Applied Data Science(Capstone Project)",
+        "category": "ml-data",
+        "domainBadge": "SPATIAL ML",
+        "badgeClass": "",
+        "description": "Spatial clustering and location recommendation system using Foursquare venue telemetry and exploratory geospatial data analysis.",
+        "stack": ["Geospatial ML", "Python", "Jupyter"],
         "url": "https://github.com/adityamhaske/Business-Location-Recommendation-System",
-        "isCoursework": false,
-        "tags": [
-            "Jupyter Notebook"
-        ]
-    },
-    {
-        "name": "MSDS-Applied-Machine-Learning",
-        "description": "MS Data Science Applied Machine Learning Course assignments and Project (Top 3 accuracy in class of 250)",
-        "url": "https://github.com/adityamhaske/MSDS-Applied-Machine-Learning",
-        "isCoursework": true,
-        "tags": [
-            "Python"
-        ]
-    },
-    {
-        "name": "MSDS-Data-Visualization",
-        "description": "DSCI 590 Data Visualization Course This course, taught by Professor Yong-Yeol (YY) Ahn",
-        "url": "https://github.com/adityamhaske/MSDS-Data-Visualization",
-        "isCoursework": true,
-        "tags": [
-            "Python"
-        ]
-    },
-    {
-        "name": "MSDS-Elements-of-AI",
-        "description": "Elements of AI course work.",
-        "url": "https://github.com/adityamhaske/MSDS-Elements-of-AI",
-        "isCoursework": true,
-        "tags": [
-            "Python"
-        ]
-    },
-    {
-        "name": "MSDS-Financial-Econometrics",
-        "description": "This course delves into financial forecasting, covering predictive regression, multi-horizon models, and principal components for improved accuracy, with a focus on rigorous out-of-sample analysis.",
-        "url": "https://github.com/adityamhaske/MSDS-Financial-Econometrics",
-        "isCoursework": true,
-        "tags": [
-            "Python"
-        ]
-    },
-    {
-        "name": "MSDS-Introduction-to-statistics",
-        "description": "Spring 2023 - Course Modules and Problem sets",
-        "url": "https://github.com/adityamhaske/MSDS-Introduction-to-statistics",
-        "isCoursework": true,
-        "tags": [
-            "Python"
-        ]
-    },
-    {
-        "name": "MSDS-MGMT-ACCESS-USE-BIG-DATA",
-        "description": "Spring 2023 course modules and assignments",
-        "url": "https://github.com/adityamhaske/MSDS-MGMT-ACCESS-USE-BIG-DATA",
-        "isCoursework": true,
-        "tags": [
-            "Python"
-        ]
-    },
-    {
-        "name": "MSDS-Microeconomics-Theory-II",
-        "description": "Spring 2023 - Course work and test",
-        "url": "https://github.com/adityamhaske/MSDS-Microeconomics-Theory-II",
-        "isCoursework": true,
-        "tags": [
-            "Python"
-        ]
+        "isCoursework": false
     },
     {
         "name": "Medical-Dashboard",
-        "description": "Medical dashboard [MD], a Hospital Management System, is a central modular concept to provide all medical management tools related to Doctor, Patient, Staff etc. ",
+        "category": "systems-edge",
+        "domainBadge": "FULL STACK",
+        "badgeClass": "",
+        "description": "Modular hospital management system and medical dashboard providing central administrative tools for doctors, patients, and clinical staff.",
+        "stack": ["TypeScript", "React", "Node.js"],
         "url": "https://github.com/adityamhaske/Medical-Dashboard",
-        "isCoursework": false,
-        "tags": [
-            "TypeScript"
-        ]
+        "isCoursework": false
     },
     {
         "name": "Green-house",
-        "description": "To design and implement an IOT based Greenhouse Monitoring System. The detection system also includes an alarm and also an LCD panel to alert the users.  The system is implemented as an Arduino based gas detector alarm, temperature detector, light detector, and water level detector.",
+        "category": "systems-edge",
+        "domainBadge": "IOT & EMBEDDED",
+        "badgeClass": "",
+        "description": "Embedded IoT greenhouse monitoring system integrating gas detectors, temperature/light sensors, water level probes, and an LCD warning panel.",
+        "stack": ["C++", "Arduino", "Sensors"],
         "url": "https://github.com/adityamhaske/Green-house",
-        "isCoursework": false,
-        "tags": [
-            "C++"
-        ]
+        "isCoursework": false
+    },
+    {
+        "name": "MSDS-Applied-Machine-Learning",
+        "category": "coursework",
+        "domainBadge": "ACADEMIC",
+        "badgeClass": "",
+        "description": "MS Data Science Applied Machine Learning assignments and capstone project (Achieved Top 3 model accuracy in a class of 250).",
+        "stack": ["Python", "Machine Learning"],
+        "url": "https://github.com/adityamhaske/MSDS-Applied-Machine-Learning",
+        "isCoursework": true
+    },
+    {
+        "name": "MSDS-Data-Visualization",
+        "category": "coursework",
+        "domainBadge": "ACADEMIC",
+        "badgeClass": "",
+        "description": "DSCI 590 Data Visualization course assignments and network visualizations, taught by Prof. Yong-Yeol (YY) Ahn.",
+        "stack": ["Python", "D3 / Network Viz"],
+        "url": "https://github.com/adityamhaske/MSDS-Data-Visualization",
+        "isCoursework": true
+    },
+    {
+        "name": "MSDS-Elements-of-AI",
+        "category": "coursework",
+        "domainBadge": "ACADEMIC",
+        "badgeClass": "",
+        "description": "Graduate coursework covering core search algorithms, heuristic state exploration, and probabilistic reasoning.",
+        "stack": ["Python", "AI Algorithms"],
+        "url": "https://github.com/adityamhaske/MSDS-Elements-of-AI",
+        "isCoursework": true
+    },
+    {
+        "name": "MSDS-Financial-Econometrics",
+        "category": "coursework",
+        "domainBadge": "ACADEMIC",
+        "badgeClass": "",
+        "description": "Financial forecasting and predictive regression modeling, multi-horizon econometric models, and out-of-sample statistical analysis.",
+        "stack": ["Python", "Econometrics"],
+        "url": "https://github.com/adityamhaske/MSDS-Financial-Econometrics",
+        "isCoursework": true
+    },
+    {
+        "name": "MSDS-Introduction-to-statistics",
+        "category": "coursework",
+        "domainBadge": "ACADEMIC",
+        "badgeClass": "",
+        "description": "Graduate statistics coursework covering hypothesis testing, Bayesian inference, confidence intervals, and regression analysis.",
+        "stack": ["Python", "Statistics"],
+        "url": "https://github.com/adityamhaske/MSDS-Introduction-to-statistics",
+        "isCoursework": true
+    },
+    {
+        "name": "MSDS-MGMT-ACCESS-USE-BIG-DATA",
+        "category": "coursework",
+        "domainBadge": "ACADEMIC",
+        "badgeClass": "",
+        "description": "Big Data architecture, distributed storage, and analytics assignments covering large-scale enterprise data workflows.",
+        "stack": ["Big Data", "Python", "SQL"],
+        "url": "https://github.com/adityamhaske/MSDS-MGMT-ACCESS-USE-BIG-DATA",
+        "isCoursework": true
+    },
+    {
+        "name": "MSDS-Microeconomics-Theory-II",
+        "category": "coursework",
+        "domainBadge": "ACADEMIC",
+        "badgeClass": "",
+        "description": "Microeconomic theory problem sets, game-theoretic modeling, and equilibrium computational models.",
+        "stack": ["Python", "Economics"],
+        "url": "https://github.com/adityamhaske/MSDS-Microeconomics-Theory-II",
+        "isCoursework": true
     }
 ];
 
+const projectCategories = [
+    { id: 'all', label: 'All' },
+    { id: 'agents-llm', label: 'Multi-Agent & LLMs' },
+    { id: 'vision-multimodal', label: 'Vision & Multimodal' },
+    { id: 'ml-data', label: 'ML & Data Systems' },
+    { id: 'systems-edge', label: 'Software & Edge' },
+    { id: 'coursework', label: 'Academic & Coursework' }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Extract unique tags
-    const allTags = new Set();
-    projectsData.forEach(p => p.tags.forEach(t => allTags.add(t)));
-    
-    // Sort tags alphabetically
-    const sortedTags = Array.from(allTags).sort();
-    
-    // Render filter buttons
+    // Render 6 broad category filter buttons with live counts
     const filterContainer = document.getElementById('filter-tags');
-    sortedTags.forEach(tag => {
-        const btn = document.createElement('button');
-        btn.className = 'filter-btn';
-        btn.dataset.tag = tag;
-        btn.textContent = tag;
-        filterContainer.appendChild(btn);
-    });
+    if (filterContainer) {
+        filterContainer.innerHTML = '';
+        projectCategories.forEach(cat => {
+            const count = cat.id === 'all'
+                ? projectsData.length
+                : projectsData.filter(p => p.category === cat.id).length;
+
+            const btn = document.createElement('button');
+            btn.className = `filter-btn ${cat.id === 'all' ? 'active' : ''}`;
+            btn.dataset.category = cat.id;
+            btn.innerHTML = `${cat.label} <span class="btn-count">(${count})</span>`;
+            filterContainer.appendChild(btn);
+        });
+    }
 
     const tbody = document.getElementById('project-list-body');
     const searchInput = document.getElementById('project-search');
+    const countBadge = document.getElementById('project-count-badge');
     const filterBtns = document.querySelectorAll('#filter-tags .filter-btn');
     const noResults = document.getElementById('no-results');
     
-    let currentTag = 'all';
+    let currentCategory = 'all';
     let currentSearch = '';
 
     // Render table rows
     function renderProjects() {
+        if (!tbody) return;
         tbody.innerHTML = '';
         
         const filtered = projectsData.filter(p => {
-            const matchesTag = currentTag === 'all' || p.tags.includes(currentTag);
+            const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
             const searchLower = currentSearch.toLowerCase();
             const matchesSearch = p.name.toLowerCase().includes(searchLower) || 
-                                  p.description.toLowerCase().includes(searchLower);
-            return matchesTag && matchesSearch;
+                                  p.description.toLowerCase().includes(searchLower) ||
+                                  p.domainBadge.toLowerCase().includes(searchLower) ||
+                                  p.stack.some(s => s.toLowerCase().includes(searchLower));
+            return matchesCategory && matchesSearch;
         });
+
+        if (countBadge) {
+            countBadge.textContent = `Showing ${filtered.length} system${filtered.length !== 1 ? 's' : ''}`;
+        }
 
         if (filtered.length === 0) {
             noResults.classList.remove('hidden');
@@ -242,34 +280,46 @@ document.addEventListener('DOMContentLoaded', () => {
             
             filtered.forEach(p => {
                 const tr = document.createElement('tr');
-                if (p.isCoursework) {
-                    tr.classList.add('coursework-row');
-                }
-                
                 const linkUrl = p.docsUrl ? p.docsUrl : p.url;
+                const stackHtml = p.stack.map(s => `<span class="table-stack-item">${s}</span>`).join('<span class="stack-dot">·</span>');
+                const docsLinkHtml = p.docsUrl ? `<a href="${p.docsUrl}" target="_blank" rel="noopener noreferrer" class="table-action-btn docs-btn">Docs ↗</a>` : '';
+
                 tr.innerHTML = `
-                    <td class="repo-name-col"><a href="${linkUrl}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">${p.name}</a></td>
+                    <td class="repo-name-col">
+                        <div class="table-repo-header">
+                            <span class="table-domain-badge ${p.badgeClass}">${p.domainBadge}</span>
+                            <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="table-repo-link">${p.name}</a>
+                        </div>
+                    </td>
                     <td class="repo-desc-col">${p.description}</td>
-                    <td class="repo-link-col"><a href="${p.url}" target="_blank" rel="noopener noreferrer">Repository ↗</a></td>
+                    <td class="repo-stack-col">
+                        <div class="table-stack-list">${stackHtml}</div>
+                    </td>
+                    <td class="repo-link-col">
+                        <div class="table-actions">
+                            <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="table-action-btn">Repo ↗</a>
+                            ${docsLinkHtml}
+                        </div>
+                    </td>
                 `;
                 tbody.appendChild(tr);
             });
         }
     }
 
-    // Event Listeners
-    searchInput.addEventListener('input', (e) => {
-        currentSearch = e.target.value;
-        renderProjects();
-    });
+    // Event Listeners for search & filters
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            renderProjects();
+        });
+    }
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Update active state
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
-            currentTag = btn.dataset.tag;
+            currentCategory = btn.dataset.category;
             renderProjects();
         });
     });
@@ -350,6 +400,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const total = data.total && data.total[year] !== undefined
                 ? data.total[year]
                 : contributions.reduce((s, c) => s + (c.count || 0), 0);
+
+            // Update live contributions count on the hero stat card
+            const heroContribEl = document.getElementById('hero-stat-contributions');
+            if (heroContribEl && total > 0) {
+                heroContribEl.textContent = `${total.toLocaleString()}+`;
+            }
 
             // Group into 7-day weeks (Sun=0 .. Sat=6)
             const weeks = [];
@@ -470,7 +526,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Set current year in footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    const currentYearEl = document.getElementById('current-year');
+    if (currentYearEl) {
+        currentYearEl.textContent = new Date().getFullYear();
+    }
+
+    // Back to top smooth scroll
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // Initial render
     renderProjects();
