@@ -269,13 +269,29 @@ section:last-of-type {
 }
 
 .hero-sticker-img {
-    width: 140px;
-    height: 140px;
-    border-radius: 20px;
+    width: 182px;
+    height: 182px;
+    border-radius: 24px;
     object-fit: cover;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--border-color);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-sticker-img.sticker-dark {
+    display: none;
+}
+
+.hero-sticker-img.sticker-light {
+    display: block;
+}
+
+[data-theme="dark"] .hero-sticker-img.sticker-dark {
+    display: block;
+}
+
+[data-theme="dark"] .hero-sticker-img.sticker-light {
+    display: none;
 }
 
 .hero-sticker-img:hover {
@@ -1118,9 +1134,9 @@ section:last-of-type {
         gap: 1.5rem;
     }
     .hero-sticker-img {
-        width: 100px;
-        height: 100px;
-        border-radius: 16px;
+        width: 130px;
+        height: 130px;
+        border-radius: 18px;
     }
     .hero-stats-grid {
         grid-template-columns: 1fr;
