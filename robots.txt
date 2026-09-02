@@ -1,0 +1,11 @@
+# adityamhaske.github.io — everything here is public and meant to be indexed.
+#
+# Only the robots.txt at the root of an origin is read, so this file governs
+# the project pages served under this domain as well. That is why their
+# sitemaps are listed here: a robots.txt inside /agent-arena/ would be ignored.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://adityamhaske.github.io/sitemap.xml
+Sitemap: https://adityamhaske.github.io/agent-arena/sitemap.xml

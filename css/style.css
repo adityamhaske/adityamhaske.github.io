@@ -1197,6 +1197,36 @@ section:last-of-type {
     .table-actions {
         justify-content: flex-start;
     }
+
+    /* The research table gets the same stacking treatment as the project
+       table. Its link column is 180px and nowrap, which cannot sit beside a
+       title on a 320px screen — that combination was pushing the whole page
+       29px wider than the viewport. */
+    .research-table,
+    .research-table tbody,
+    .research-table tr,
+    .research-table td {
+        display: block;
+        width: 100%;
+    }
+    .research-table tr {
+        padding: 1.25rem 0.25rem;
+    }
+    .research-table td {
+        padding: 0.3rem 0;
+    }
+    .research-index-col {
+        padding-top: 0 !important;
+    }
+    .research-link-col {
+        width: 100%;
+        text-align: left;
+        white-space: normal;
+        padding-top: 0.5rem !important;
+    }
+    .research-link-col a {
+        display: inline-block;
+    }
 }
 
 /* GitHub Calendar Dark Mode Overrides */

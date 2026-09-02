@@ -1,318 +1,51 @@
 /**
- * Hardcoded project data.
- * Categorized into 6 broad engineering domains.
+ * Progressive enhancement for adityamhaske.github.io.
+ *
+ * The project and research tables are static markup in index.html — a crawler
+ * (or a browser with JS off) sees every row without running any of this. What
+ * follows only filters what is already on the page.
  */
-const projectsData = [
-    {
-        "name": "Multi-Agent-Research-Assistant",
-        "category": "agents-llm",
-        "domainBadge": "AGENTIC DAG",
-        "badgeClass": "badge-agent",
-        "description": "Open-source multi-agent research platform with Planner, Researcher, Critic, and Synthesizer agents, human-in-the-loop validation, and per-claim citations.",
-        "stack": ["LangGraph", "FastAPI", "Next.js"],
-        "url": "https://github.com/adityamhaske/Multi-Agent-Research-Assistant",
-        "docsUrl": "https://adityamhaske.github.io/Multi-Agent-Research-Assistant/",
-        "isCoursework": false
-    },
-    {
-        "name": "agent-arena",
-        "category": "agents-llm",
-        "domainBadge": "EVALS & TRACING",
-        "badgeClass": "badge-agent",
-        "description": "Evaluation harness that ranks models and whole multi-agent pipelines on your own accuracy, cost and latency criteria, plus a frozen study benchmarking four coordination topologies with structured telemetry.",
-        "stack": ["LLM Evals", "Structured Tracing", "Python"],
-        "url": "https://github.com/adityamhaske/agent-arena",
-        "docsUrl": "https://adityamhaske.github.io/agent-arena",
-        "isCoursework": false
-    },
-    {
-        "name": "AI-Co-Pilot-for-SaaS-Analytics-Platform",
-        "category": "agents-llm",
-        "domainBadge": "NATURAL LANGUAGE AI",
-        "badgeClass": "badge-agent",
-        "description": "Natural-language AI co-pilot translating conversational analytics queries into structured backend API calls via Anthropic function calling.",
-        "stack": ["Anthropic API", "FastAPI", "Python"],
-        "url": "https://github.com/adityamhaske/AI-Co-Pilot-for-SaaS-Analytics-Platform",
-        "isCoursework": false
-    },
-    {
-        "name": "IndusAI",
-        "category": "agents-llm",
-        "domainBadge": "INDUSTRIAL RAG",
-        "badgeClass": "badge-agent",
-        "description": "Industrial AI assistant for PLC fault log analysis and diagnostics; architected GCP cloud migration with sub-second vector matching.",
-        "stack": ["Gemini Flash", "Qdrant", "Cloud Run"],
-        "url": "https://github.com/adityamhaske/IndusAI",
-        "isCoursework": false
-    },
-    {
-        "name": "Kelley-LLM-NLP-Cross-Classified",
-        "category": "agents-llm",
-        "domainBadge": "NLP & LLM",
-        "badgeClass": "badge-agent",
-        "description": "Data science and NLP research with Kelley School of Business, analyzing political Twitter text, customer intent models, and cross-classified tracking.",
-        "stack": ["LLM / NLP", "Python", "Jupyter"],
-        "url": "https://github.com/adityamhaske/Kelley-LLM-NLP-Cross-Classified",
-        "isCoursework": false
-    },
-    {
-        "name": "AffectiSense",
-        "category": "vision-multimodal",
-        "domainBadge": "MULTIMODAL AI",
-        "badgeClass": "",
-        "description": "NeuroSense AI — Multimodal mental health assessment platform fusing neurophysiological (EEG), vocal acoustic biomarker, and facial signals.",
-        "stack": ["PyTorch", "EEG Processing", "Python"],
-        "url": "https://github.com/adityamhaske/AffectiSense",
-        "isCoursework": false
-    },
-    {
-        "name": "Multimodal_Depression_Analysis",
-        "category": "vision-multimodal",
-        "domainBadge": "MULTIMODAL AI",
-        "badgeClass": "",
-        "description": "Multimodal behavioral analysis platform combining facial micro-expression telemetry and acoustic signal processing for mental health markers.",
-        "stack": ["Multimodal AI", "Signal Proc", "Python"],
-        "url": "https://github.com/adityamhaske/Multimodal_Depression_Analysis",
-        "isCoursework": false
-    },
-    {
-        "name": "Object-Detection-and-Localization",
-        "category": "vision-multimodal",
-        "domainBadge": "COMPUTER VISION",
-        "badgeClass": "",
-        "description": "Real-time object detection and spatial localization pipeline utilizing custom YOLO models and low-latency computer vision routines.",
-        "stack": ["YOLO", "OpenCV", "Python"],
-        "url": "https://github.com/adityamhaske/Object-Detection-and-Localization",
-        "isCoursework": false
-    },
-    {
-        "name": "BMR-ML-Pipeline_DBMS",
-        "category": "ml-data",
-        "domainBadge": "DATA PIPELINE",
-        "badgeClass": "",
-        "description": "End-to-end ML data pipelines, relational database architecture in Oracle SQL, and business intelligence dashboards in Tableau.",
-        "stack": ["Oracle SQL", "Python", "Tableau"],
-        "url": "https://github.com/adityamhaske/BMR-ML-Pipeline_DBMS",
-        "isCoursework": false
-    },
-    {
-        "name": "Cardiovascular_disease_prediction",
-        "category": "ml-data",
-        "domainBadge": "PREDICTIVE ML",
-        "badgeClass": "",
-        "description": "Supervised machine learning pipeline evaluating classification model ensembles for high-sensitivity cardiovascular disease risk prediction.",
-        "stack": ["Scikit-Learn", "Python", "Jupyter"],
-        "url": "https://github.com/adityamhaske/Cardiovascular_disease_prediction",
-        "isCoursework": false
-    },
-    {
-        "name": "Stock-Prediction-of-Deutsche-Borse-Using-AWS",
-        "category": "ml-data",
-        "domainBadge": "CLOUD ML",
-        "badgeClass": "",
-        "description": "Distributed data preprocessing, wrangling, and financial forecasting pipeline for Deutsche Börse stock data deployed on AWS.",
-        "stack": ["AWS", "Time-Series ML", "Python"],
-        "url": "https://github.com/adityamhaske/Stock-Prediction-of-Deutsche-Borse-Using-AWS",
-        "isCoursework": false
-    },
-    {
-        "name": "Business-Location-Recommendation-System",
-        "category": "ml-data",
-        "domainBadge": "SPATIAL ML",
-        "badgeClass": "",
-        "description": "Spatial clustering and location recommendation system using Foursquare venue telemetry and exploratory geospatial data analysis.",
-        "stack": ["Geospatial ML", "Python", "Jupyter"],
-        "url": "https://github.com/adityamhaske/Business-Location-Recommendation-System",
-        "isCoursework": false
-    },
-    {
-        "name": "Medical-Dashboard",
-        "category": "systems-edge",
-        "domainBadge": "FULL STACK",
-        "badgeClass": "",
-        "description": "Modular hospital management system and medical dashboard providing central administrative tools for doctors, patients, and clinical staff.",
-        "stack": ["TypeScript", "React", "Node.js"],
-        "url": "https://github.com/adityamhaske/Medical-Dashboard",
-        "isCoursework": false
-    },
-    {
-        "name": "Green-house",
-        "category": "systems-edge",
-        "domainBadge": "IOT & EMBEDDED",
-        "badgeClass": "",
-        "description": "Embedded IoT greenhouse monitoring system integrating gas detectors, temperature/light sensors, water level probes, and an LCD warning panel.",
-        "stack": ["C++", "Arduino", "Sensors"],
-        "url": "https://github.com/adityamhaske/Green-house",
-        "isCoursework": false
-    },
-    {
-        "name": "MSDS-Applied-Machine-Learning",
-        "category": "coursework",
-        "domainBadge": "ACADEMIC",
-        "badgeClass": "",
-        "description": "MS Data Science Applied Machine Learning assignments and capstone project (Achieved Top 3 model accuracy in a class of 250).",
-        "stack": ["Python", "Machine Learning"],
-        "url": "https://github.com/adityamhaske/MSDS-Applied-Machine-Learning",
-        "isCoursework": true
-    },
-    {
-        "name": "MSDS-Data-Visualization",
-        "category": "coursework",
-        "domainBadge": "ACADEMIC",
-        "badgeClass": "",
-        "description": "DSCI 590 Data Visualization course assignments and network visualizations, taught by Prof. Yong-Yeol (YY) Ahn.",
-        "stack": ["Python", "D3 / Network Viz"],
-        "url": "https://github.com/adityamhaske/MSDS-Data-Visualization",
-        "isCoursework": true
-    },
-    {
-        "name": "MSDS-Elements-of-AI",
-        "category": "coursework",
-        "domainBadge": "ACADEMIC",
-        "badgeClass": "",
-        "description": "Graduate coursework covering core search algorithms, heuristic state exploration, and probabilistic reasoning.",
-        "stack": ["Python", "AI Algorithms"],
-        "url": "https://github.com/adityamhaske/MSDS-Elements-of-AI",
-        "isCoursework": true
-    },
-    {
-        "name": "MSDS-Financial-Econometrics",
-        "category": "coursework",
-        "domainBadge": "ACADEMIC",
-        "badgeClass": "",
-        "description": "Financial forecasting and predictive regression modeling, multi-horizon econometric models, and out-of-sample statistical analysis.",
-        "stack": ["Python", "Econometrics"],
-        "url": "https://github.com/adityamhaske/MSDS-Financial-Econometrics",
-        "isCoursework": true
-    },
-    {
-        "name": "MSDS-Introduction-to-statistics",
-        "category": "coursework",
-        "domainBadge": "ACADEMIC",
-        "badgeClass": "",
-        "description": "Graduate statistics coursework covering hypothesis testing, Bayesian inference, confidence intervals, and regression analysis.",
-        "stack": ["Python", "Statistics"],
-        "url": "https://github.com/adityamhaske/MSDS-Introduction-to-statistics",
-        "isCoursework": true
-    },
-    {
-        "name": "MSDS-MGMT-ACCESS-USE-BIG-DATA",
-        "category": "coursework",
-        "domainBadge": "ACADEMIC",
-        "badgeClass": "",
-        "description": "Big Data architecture, distributed storage, and analytics assignments covering large-scale enterprise data workflows.",
-        "stack": ["Big Data", "Python", "SQL"],
-        "url": "https://github.com/adityamhaske/MSDS-MGMT-ACCESS-USE-BIG-DATA",
-        "isCoursework": true
-    },
-    {
-        "name": "MSDS-Microeconomics-Theory-II",
-        "category": "coursework",
-        "domainBadge": "ACADEMIC",
-        "badgeClass": "",
-        "description": "Microeconomic theory problem sets, game-theoretic modeling, and equilibrium computational models.",
-        "stack": ["Python", "Economics"],
-        "url": "https://github.com/adityamhaske/MSDS-Microeconomics-Theory-II",
-        "isCoursework": true
-    }
-];
-
-const projectCategories = [
-    { id: 'all', label: 'All' },
-    { id: 'agents-llm', label: 'Multi-Agent & LLMs' },
-    { id: 'vision-multimodal', label: 'Vision & Multimodal' },
-    { id: 'ml-data', label: 'ML & Data Systems' },
-    { id: 'systems-edge', label: 'Software & Edge' },
-    { id: 'coursework', label: 'Academic & Coursework' }
-];
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Render 6 broad category filter buttons with live counts
-    const filterContainer = document.getElementById('filter-tags');
-    if (filterContainer) {
-        filterContainer.innerHTML = '';
-        projectCategories.forEach(cat => {
-            const count = cat.id === 'all'
-                ? projectsData.length
-                : projectsData.filter(p => p.category === cat.id).length;
-
-            const btn = document.createElement('button');
-            btn.className = `filter-btn ${cat.id === 'all' ? 'active' : ''}`;
-            btn.dataset.category = cat.id;
-            btn.innerHTML = `${cat.label} <span class="btn-count">(${count})</span>`;
-            filterContainer.appendChild(btn);
-        });
-    }
-
-    const tbody = document.getElementById('project-list-body');
+    // Projects: filter the rows already in the document. Rebuilding them from
+    // an array would make the markup a second copy of the data and hide the
+    // whole list from anything that does not execute JavaScript.
+    const projectRows = Array.prototype.slice.call(document.querySelectorAll('.project-row'));
     const searchInput = document.getElementById('project-search');
     const countBadge = document.getElementById('project-count-badge');
     const filterBtns = document.querySelectorAll('#filter-tags .filter-btn');
     const noResults = document.getElementById('no-results');
-    
+    const projectTable = document.querySelector('.project-table');
+
     let currentCategory = 'all';
     let currentSearch = '';
 
-    // Render table rows
-    function renderProjects() {
-        if (!tbody) return;
-        tbody.innerHTML = '';
-        
-        const filtered = projectsData.filter(p => {
-            const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
-            const searchLower = currentSearch.toLowerCase();
-            const matchesSearch = p.name.toLowerCase().includes(searchLower) || 
-                                  p.description.toLowerCase().includes(searchLower) ||
-                                  p.domainBadge.toLowerCase().includes(searchLower) ||
-                                  p.stack.some(s => s.toLowerCase().includes(searchLower));
-            return matchesCategory && matchesSearch;
+    function applyProjectFilters() {
+        if (!projectRows.length) return;
+        const needle = currentSearch.trim().toLowerCase();
+        let visible = 0;
+
+        projectRows.forEach(row => {
+            const matchesCategory = currentCategory === 'all' || row.dataset.category === currentCategory;
+            // data-search is built at authoring time from the name, summary,
+            // domain badge and stack, so matching never walks the DOM.
+            const matchesSearch = !needle || (row.dataset.search || '').includes(needle);
+            const show = matchesCategory && matchesSearch;
+            row.classList.toggle('hidden', !show);
+            if (show) visible++;
         });
 
         if (countBadge) {
-            countBadge.textContent = `Showing ${filtered.length} system${filtered.length !== 1 ? 's' : ''}`;
+            countBadge.textContent = `Showing ${visible} system${visible !== 1 ? 's' : ''}`;
         }
-
-        if (filtered.length === 0) {
-            noResults.classList.remove('hidden');
-            tbody.parentElement.classList.add('hidden');
-        } else {
-            noResults.classList.add('hidden');
-            tbody.parentElement.classList.remove('hidden');
-            
-            filtered.forEach(p => {
-                const tr = document.createElement('tr');
-                const linkUrl = p.docsUrl ? p.docsUrl : p.url;
-                const stackHtml = p.stack.map(s => `<span class="table-stack-item">${s}</span>`).join('<span class="stack-dot">·</span>');
-                const docsLinkHtml = p.docsUrl ? `<a href="${p.docsUrl}" target="_blank" rel="noopener noreferrer" class="table-action-btn docs-btn">Docs ↗</a>` : '';
-
-                tr.innerHTML = `
-                    <td class="repo-name-col">
-                        <div class="table-repo-header">
-                            <span class="table-domain-badge ${p.badgeClass}">${p.domainBadge}</span>
-                            <a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="table-repo-link">${p.name}</a>
-                        </div>
-                    </td>
-                    <td class="repo-desc-col">${p.description}</td>
-                    <td class="repo-stack-col">
-                        <div class="table-stack-list">${stackHtml}</div>
-                    </td>
-                    <td class="repo-link-col">
-                        <div class="table-actions">
-                            <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="table-action-btn">Repo ↗</a>
-                            ${docsLinkHtml}
-                        </div>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
+        if (noResults) noResults.classList.toggle('hidden', visible !== 0);
+        if (projectTable) projectTable.classList.toggle('hidden', visible === 0);
     }
 
-    // Event Listeners for search & filters
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             currentSearch = e.target.value;
-            renderProjects();
+            applyProjectFilters();
         });
     }
 
@@ -321,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentCategory = btn.dataset.category;
-            renderProjects();
+            applyProjectFilters();
         });
     });
 
@@ -541,7 +274,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initial render
-    renderProjects();
+    // Nothing to render — the rows are already in the document. This one call
+    // just recomputes the count badge from the DOM, so the number stays right
+    // when a row is added without touching the hardcoded fallback.
+    applyProjectFilters();
     initGitHubCalendar('adityamhaske', 2026);
 });
