@@ -19,9 +19,10 @@ const projectsData = [
         "category": "agents-llm",
         "domainBadge": "EVALS & TRACING",
         "badgeClass": "badge-agent",
-        "description": "Evaluation harness to empirically benchmark multi-agent topologies (Single-Agent, Supervisor-Worker, Peer-to-Peer, Debate) with structured telemetry.",
-        "stack": ["LangGraph", "LLM Evals", "Python"],
+        "description": "Evaluation harness that ranks models and whole multi-agent pipelines on your own accuracy, cost and latency criteria, plus a frozen study benchmarking four coordination topologies with structured telemetry.",
+        "stack": ["LLM Evals", "Structured Tracing", "Python"],
         "url": "https://github.com/adityamhaske/agent-arena",
+        "docsUrl": "https://adityamhaske.github.io/agent-arena",
         "isCoursework": false
     },
     {
