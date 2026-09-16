@@ -9,3 +9,4 @@ Allow: /
 
 Sitemap: https://adityamhaske.github.io/sitemap.xml
 Sitemap: https://adityamhaske.github.io/agent-arena/sitemap.xml
+Sitemap: https://adityamhaske.github.io/computer-use-automation/sitemap.xml
