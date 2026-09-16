@@ -147,6 +147,26 @@
               "position": 4,
               "item": {
                 "@type": "SoftwareSourceCode",
+                "name": "computer-use-automation",
+                "description": "LLM-driven automation for legacy apps with no API: discovers a workflow once, compiles it into a typed capability artifact, then replays it deterministically with no model in the loop.",
+                "codeRepository": "https://github.com/adityamhaske/computer-use-automation",
+                "url": "https://adityamhaske.github.io/computer-use-automation/",
+                "programmingLanguage": [
+                  "Playwright",
+                  "LLM Agents",
+                  "Python"
+                ],
+                "author": {
+                  "@type": "Person",
+                  "name": "Aditya Mhaske"
+                }
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "item": {
+                "@type": "SoftwareSourceCode",
                 "name": "IndusAI",
                 "description": "Industrial AI assistant for PLC fault log analysis and diagnostics; architected GCP cloud migration with sub-second vector matching.",
                 "codeRepository": "https://github.com/adityamhaske/IndusAI",
@@ -164,7 +184,7 @@
             },
             {
               "@type": "ListItem",
-              "position": 5,
+              "position": 6,
               "item": {
                 "@type": "SoftwareSourceCode",
                 "name": "Kelley-LLM-NLP-Cross-Classified",
@@ -184,7 +204,7 @@
             },
             {
               "@type": "ListItem",
-              "position": 6,
+              "position": 7,
               "item": {
                 "@type": "SoftwareSourceCode",
                 "name": "AffectiSense",
@@ -204,7 +224,7 @@
             },
             {
               "@type": "ListItem",
-              "position": 7,
+              "position": 8,
               "item": {
                 "@type": "SoftwareSourceCode",
                 "name": "Multimodal_Depression_Analysis",
@@ -214,26 +234,6 @@
                 "programmingLanguage": [
                   "Multimodal AI",
                   "Signal Proc",
-                  "Python"
-                ],
-                "author": {
-                  "@type": "Person",
-                  "name": "Aditya Mhaske"
-                }
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 8,
-              "item": {
-                "@type": "SoftwareSourceCode",
-                "name": "Object-Detection-and-Localization",
-                "description": "Real-time object detection and spatial localization pipeline utilizing custom YOLO models and low-latency computer vision routines.",
-                "codeRepository": "https://github.com/adityamhaske/Object-Detection-and-Localization",
-                "url": "https://github.com/adityamhaske/Object-Detection-and-Localization",
-                "programmingLanguage": [
-                  "YOLO",
-                  "OpenCV",
                   "Python"
                 ],
                 "author": {
@@ -540,6 +540,34 @@
 
                 <article class="featured-card">
                     <div class="card-top-bar">
+                        <span class="system-badge">Computer-Use Agents</span>
+                        <span class="tag">Open Source</span>
+                    </div>
+                    <h3 class="repo-name"><a href="https://adityamhaske.github.io/computer-use-automation/"
+                            target="_blank" rel="noopener noreferrer">computer-use-automation</a></h3>
+                    <p class="repo-desc">LLM-driven automation for legacy apps with no API: discovers a workflow
+                        once, then replays it deterministically with no model in the loop.</p>
+                    <div class="arch-highlight">
+                        <span class="arch-highlight-title">// Core Architecture</span>
+                        Playwright-driven LLM discovery compiled into versioned, content-hashed capability artifacts;
+                        zero-model deterministic replay with policy-gated human escalation on stuck runs.
+                    </div>
+                    <div class="tech-stack-pills">
+                        <span class="tech-pill">Playwright</span>
+                        <span class="tech-pill">LLM Agents</span>
+                        <span class="tech-pill">FastAPI</span>
+                        <span class="tech-pill">Python</span>
+                    </div>
+                    <div class="repo-links">
+                        <a href="https://github.com/adityamhaske/computer-use-automation" target="_blank"
+                            rel="noopener noreferrer">Repository ↗</a>
+                        <a href="https://adityamhaske.github.io/computer-use-automation/" target="_blank"
+                            rel="noopener noreferrer">Docs & Live ↗</a>
+                    </div>
+                </article>
+
+                <article class="featured-card">
+                    <div class="card-top-bar">
                         <span class="system-badge">Industrial AI</span>
                         <span class="tag">Cloud Architecture</span>
                     </div>
@@ -588,32 +616,6 @@
                             rel="noopener noreferrer">Repository ↗</a>
                     </div>
                 </article>
-
-                <article class="featured-card">
-                    <div class="card-top-bar">
-                        <span class="system-badge">Computer Vision</span>
-                        <span class="tag">Edge AI</span>
-                    </div>
-                    <h3 class="repo-name"><a href="https://github.com/adityamhaske/Object-Detection-and-Localization"
-                            target="_blank" rel="noopener noreferrer">Object-Detection-and-Localization</a></h3>
-                    <p class="repo-desc">Real-time object detection, spatial localization, and tracking pipeline
-                        optimized for embedded edge deployment.</p>
-                    <div class="arch-highlight">
-                        <span class="arch-highlight-title">// Core Architecture</span>
-                        Custom YOLO-based detection pipeline fused with spatial coordinate mapping and low-latency frame
-                        extraction algorithms.
-                    </div>
-                    <div class="tech-stack-pills">
-                        <span class="tech-pill">Computer Vision</span>
-                        <span class="tech-pill">YOLO</span>
-                        <span class="tech-pill">OpenCV</span>
-                        <span class="tech-pill">Python</span>
-                    </div>
-                    <div class="repo-links">
-                        <a href="https://github.com/adityamhaske/Object-Detection-and-Localization" target="_blank"
-                            rel="noopener noreferrer">Repository ↗</a>
-                    </div>
-                </article>
             </div>
         </section>
 
@@ -645,8 +647,8 @@
                 </div>
                 <div class="filter-tags" id="filter-tags">
                     <button class="filter-btn active" data-category="all">All <span class="btn-count">(21)</span></button>
-                    <button class="filter-btn" data-category="agents-llm">Multi-Agent &amp; LLMs <span class="btn-count">(5)</span></button>
-                    <button class="filter-btn" data-category="vision-multimodal">Vision &amp; Multimodal <span class="btn-count">(3)</span></button>
+                    <button class="filter-btn" data-category="agents-llm">Multi-Agent &amp; LLMs <span class="btn-count">(6)</span></button>
+                    <button class="filter-btn" data-category="vision-multimodal">Vision &amp; Multimodal <span class="btn-count">(2)</span></button>
                     <button class="filter-btn" data-category="ml-data">ML &amp; Data Systems <span class="btn-count">(4)</span></button>
                     <button class="filter-btn" data-category="systems-edge">Software &amp; Edge <span class="btn-count">(2)</span></button>
                     <button class="filter-btn" data-category="coursework">Academic &amp; Coursework <span class="btn-count">(7)</span></button>
@@ -730,6 +732,28 @@
                         </tr>
 
                         <tr class="project-row" data-category="agents-llm"
+                            data-search="computer-use-automation llm-driven automation for legacy apps with no api: discovers a workflow once, compiles it into a typed capability artifact, then replays it deterministically with no model in the loop. agentic automation playwright llm agents fastapi python">
+                            <td class="repo-name-col">
+                                <div class="table-repo-header">
+                                    <span class="table-domain-badge badge-agent">AGENTIC AUTOMATION</span>
+                                    <a href="https://adityamhaske.github.io/computer-use-automation/" target="_blank" rel="noopener noreferrer"
+                                        class="table-repo-link">computer-use-automation</a>
+                                </div>
+                            </td>
+                            <td class="repo-desc-col">LLM-driven automation for legacy apps with no API: discovers a workflow once, compiles it into a typed capability artifact, then replays it deterministically with no model in the loop.</td>
+                            <td class="repo-stack-col">
+                                <div class="table-stack-list"><span class="table-stack-item">Playwright</span><span class="stack-dot">·</span><span class="table-stack-item">LLM Agents</span><span class="stack-dot">·</span><span class="table-stack-item">Python</span></div>
+                            </td>
+                            <td class="repo-link-col">
+                                <div class="table-actions">
+                                    <a href="https://github.com/adityamhaske/computer-use-automation" target="_blank" rel="noopener noreferrer"
+                                        class="table-action-btn">Repo ↗</a>
+                                <a href="https://adityamhaske.github.io/computer-use-automation/" target="_blank" rel="noopener noreferrer" class="table-action-btn docs-btn">Docs ↗</a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="project-row" data-category="agents-llm"
                             data-search="indusai industrial ai assistant for plc fault log analysis and diagnostics; architected gcp cloud migration with sub-second vector matching. industrial rag gemini flash qdrant cloud run">
                             <td class="repo-name-col">
                                 <div class="table-repo-header">
@@ -808,27 +832,6 @@
                             <td class="repo-link-col">
                                 <div class="table-actions">
                                     <a href="https://github.com/adityamhaske/Multimodal_Depression_Analysis" target="_blank" rel="noopener noreferrer"
-                                        class="table-action-btn">Repo ↗</a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr class="project-row" data-category="vision-multimodal"
-                            data-search="object-detection-and-localization real-time object detection and spatial localization pipeline utilizing custom yolo models and low-latency computer vision routines. computer vision yolo opencv python">
-                            <td class="repo-name-col">
-                                <div class="table-repo-header">
-                                    <span class="table-domain-badge">COMPUTER VISION</span>
-                                    <a href="https://github.com/adityamhaske/Object-Detection-and-Localization" target="_blank" rel="noopener noreferrer"
-                                        class="table-repo-link">Object-Detection-and-Localization</a>
-                                </div>
-                            </td>
-                            <td class="repo-desc-col">Real-time object detection and spatial localization pipeline utilizing custom YOLO models and low-latency computer vision routines.</td>
-                            <td class="repo-stack-col">
-                                <div class="table-stack-list"><span class="table-stack-item">YOLO</span><span class="stack-dot">·</span><span class="table-stack-item">OpenCV</span><span class="stack-dot">·</span><span class="table-stack-item">Python</span></div>
-                            </td>
-                            <td class="repo-link-col">
-                                <div class="table-actions">
-                                    <a href="https://github.com/adityamhaske/Object-Detection-and-Localization" target="_blank" rel="noopener noreferrer"
                                         class="table-action-btn">Repo ↗</a>
                                 </div>
                             </td>
