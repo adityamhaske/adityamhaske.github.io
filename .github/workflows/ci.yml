@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Validate JSON-LD is well-formed
+        run: |
+          python3 - <<'PY'
+          import json
+          import re
+          import sys
+
+          content = open("index.html", encoding="utf-8").read()
+          blocks = re.findall(
+              r'<script type="application/ld\+json">(.*?)</script>', content, re.DOTALL
+          )
+          if not blocks:
+              print("No JSON-LD blocks found in index.html")
+              sys.exit(1)
+
+          ok = True
+          for i, block in enumerate(blocks, start=1):
+              try:
+                  json.loads(block)
+                  print(f"JSON-LD block {i}: valid")
+              except json.JSONDecodeError as e:
+                  print(f"JSON-LD block {i}: INVALID - {e}")
+                  ok = False
+          sys.exit(0 if ok else 1)
+          PY
+
+      - name: HTML5 / CSS validation
+        uses: Cyb3r-Jak3/html5validator-action@v8.0.0
+        with:
+          root: .
+          css: true
+          # rx/ry are valid CSS geometry properties for SVG shapes (CSS
+          # Fill & Stroke / SVG2, used to round the GitHub contribution
+          # calendar's <rect> cells); the Nu Html Checker's CSS backend
+          # predates them and flags both as unknown properties.
+          extra: --ignore-re Property\s.r[xy].\sdoesn.t\sexist
+
+      - name: Check internal links and anchors (offline)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --offline
+            --include-fragments
+            --root-dir "$(pwd)"
+            --no-progress
+            .
+          fail: true
+          failIfEmpty: false
