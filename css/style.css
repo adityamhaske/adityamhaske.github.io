@@ -123,6 +123,7 @@ a:focus-visible {
 }
 
 .toggle-track {
+    display: inline-block;
     width: 32px;
     height: 18px;
     background-color: var(--border-color);
