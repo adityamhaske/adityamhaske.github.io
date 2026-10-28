@@ -15,6 +15,7 @@
     /* Spacing */
     --baseline: 1.5rem;
     --container-width: 900px;
+    --sidebar-width: 240px;
     --header-bg: rgba(247, 245, 240, 0.95);
     --table-hover: rgba(0, 0, 0, 0.03);
 }
@@ -47,6 +48,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Set while the mobile nav drawer is open, to stop the page scrolling
+   behind it. Has no effect on desktop, where the drawer toggle is hidden. */
+body.nav-locked {
+    overflow: hidden;
+}
+
 h1, h2, h3, h4 {
     font-family: var(--font-heading);
     font-weight: 600;
@@ -77,25 +84,62 @@ a:focus-visible {
     font-family: var(--font-mono);
 }
 
-/* Layout */
-.site-header {
-    position: sticky;
+/* Skip link: hidden until keyboard-focused, so keyboard/AT users and
+   crawlers can bypass the sidebar nav straight to the main content. */
+.skip-link {
+    position: absolute;
+    top: -3rem;
+    left: 0;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 0.6rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1000;
+    transition: top 0.15s ease;
+}
+
+.skip-link:focus {
     top: 0;
-    background-color: var(--header-bg);
-    backdrop-filter: blur(4px);
-    border-bottom: 1px solid var(--border-color);
-    z-index: 100;
+}
+
+/* Layout — mobile-first: a sticky top bar by default. The
+   min-width:769px block below turns it into a fixed left sidebar. */
+/* Mobile-first: the sidebar is an off-canvas drawer, closed by default
+   (translateX(-100%)) and toggled via the hamburger button's .nav-open
+   class. The min-width:769px block below docks it as a permanent
+   left column and hides the mobile-only toggle/backdrop. */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(82vw, 280px);
+    background-color: var(--bg-color);
+    border-right: 1px solid var(--border-color);
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    z-index: 190;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+}
+
+.site-header.nav-open {
+    transform: translateX(0);
 }
 
 .header-inner {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 1rem 1.5rem;
+    height: 100%;
+    /* Extra top clearance on mobile so content starts below the floating
+       hamburger button; the min-width:769px block tightens this back up
+       once that button is hidden. */
+    padding: 4.5rem 1.5rem 2rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
 }
 
 .site-title {
@@ -106,20 +150,51 @@ a:focus-visible {
     text-transform: uppercase;
 }
 
-.site-nav a,
+.site-title a {
+    color: var(--text-primary);
+}
+
+.site-title a:hover,
+.site-title a:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.site-nav {
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.site-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.site-nav-list a,
 .theme-toggle {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.65rem;
+    width: 100%;
     text-transform: uppercase;
     font-size: 0.8rem;
     color: var(--text-muted);
     letter-spacing: 0.05em;
     background: none;
     border: none;
+    border-left: 2px solid transparent;
+    border-radius: 0 4px 4px 0;
     cursor: pointer;
     font-family: var(--font-mono);
-    padding: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0.65rem;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.nav-icon {
+    flex-shrink: 0;
 }
 
 .toggle-track {
@@ -129,6 +204,7 @@ a:focus-visible {
     background-color: var(--border-color);
     border-radius: 999px;
     position: relative;
+    margin-left: auto;
     transition: background-color 0.3s;
 }
 
@@ -152,31 +228,19 @@ a:focus-visible {
     background-color: var(--bg-color);
 }
 
-.site-nav a:hover,
-.site-nav a:focus,
-.theme-toggle:hover {
+.site-nav-list a:hover,
+.site-nav-list a:focus-visible {
     color: var(--text-primary);
     text-decoration: none;
+    border-left-color: var(--accent-color);
+    background-color: var(--table-hover);
 }
 
-.site-nav {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-}
-
-.site-nav a {
-    color: var(--text-primary);
-}
-
-.site-nav a:hover {
+.site-nav-list a.active {
     color: var(--accent-color);
-}
-
-.nav-separator {
-    color: var(--border-color);
+    border-left-color: var(--accent-color);
+    background-color: var(--table-hover);
+    font-weight: 500;
 }
 
 .portfolio-link {
@@ -187,10 +251,105 @@ a:focus-visible {
     color: var(--accent-color) !important;
 }
 
+.theme-toggle {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+    border-left: none;
+    border-radius: 0;
+}
+
+.theme-toggle:hover {
+    color: var(--text-primary);
+    border-left: none;
+    background-color: transparent;
+}
+
 main {
     max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 1.5rem 4rem;
+}
+
+/* Hamburger trigger — floats top-left, independent of the drawer's own
+   open/closed state so it stays reachable to toggle either way. */
+.nav-toggle {
+    display: flex;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 210;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: var(--text-primary);
+    border-radius: 1px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 150;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.nav-backdrop.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Tablet/desktop: dock the sidebar permanently and drop the mobile
+   drawer chrome. */
+@media (min-width: 769px) {
+    .site-header {
+        width: var(--sidebar-width);
+        box-shadow: none;
+        transform: none;
+    }
+
+    .header-inner {
+        padding: 2rem 1.5rem;
+    }
+
+    .page-body {
+        margin-left: var(--sidebar-width);
+    }
+
+    .nav-toggle,
+    .nav-backdrop {
+        display: none;
+    }
 }
 
 /* Sections */
@@ -1120,15 +1279,6 @@ section:last-of-type {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .site-nav {
-        width: 100%;
-        margin-top: 1rem;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-    .nav-separator {
-        display: none;
-    }
     .hero-main-row {
         flex-direction: column-reverse;
         align-items: flex-start;
