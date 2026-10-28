@@ -120,9 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // GitHub Contributions Calendar
-    async function initGitHubCalendar(username = 'adityamhaske', year = 2026) {
+    async function initGitHubCalendar(username = 'adityamhaske', year = new Date().getFullYear()) {
         const calendarEl = document.getElementById('github-calendar') || document.querySelector('.calendar');
         if (!calendarEl) return;
+
+        const yearLabelEl = document.getElementById('contrib-year');
+        if (yearLabelEl) yearLabelEl.textContent = `(${year})`;
 
         const cacheKey = `github-contributions-${username}-${year}`;
         const cachedData = localStorage.getItem(cacheKey);
@@ -278,5 +281,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // just recomputes the count badge from the DOM, so the number stays right
     // when a row is added without touching the hardcoded fallback.
     applyProjectFilters();
-    initGitHubCalendar('adityamhaske', 2026);
+    initGitHubCalendar('adityamhaske');
 });
