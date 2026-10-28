@@ -119,6 +119,78 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem("theme", theme);
     });
 
+    // Mobile nav drawer — the sidebar doubles as an off-canvas menu under
+    // 769px, opened via the floating hamburger button.
+    const navToggle = document.getElementById('nav-toggle');
+    const siteHeader = document.getElementById('site-header');
+    const navBackdrop = document.getElementById('nav-backdrop');
+
+    if (navToggle && siteHeader && navBackdrop) {
+        const closeNav = () => {
+            siteHeader.classList.remove('nav-open');
+            navBackdrop.classList.remove('visible');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Open menu');
+            document.body.classList.remove('nav-locked');
+        };
+
+        const openNav = () => {
+            siteHeader.classList.add('nav-open');
+            navBackdrop.classList.add('visible');
+            navToggle.setAttribute('aria-expanded', 'true');
+            navToggle.setAttribute('aria-label', 'Close menu');
+            document.body.classList.add('nav-locked');
+        };
+
+        navToggle.addEventListener('click', () => {
+            if (siteHeader.classList.contains('nav-open')) closeNav();
+            else openNav();
+        });
+
+        navBackdrop.addEventListener('click', closeNav);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && siteHeader.classList.contains('nav-open')) {
+                closeNav();
+                navToggle.focus();
+            }
+        });
+
+        // Closing on link click only matters for the mobile drawer; on
+        // desktop the sidebar is permanently docked, so this is a no-op.
+        siteHeader.querySelectorAll('.site-nav-list a').forEach((link) => {
+            link.addEventListener('click', closeNav);
+        });
+
+        // Resizing past the desktop breakpoint with the drawer open would
+        // otherwise leave body scroll locked with no way to reach the
+        // (now hidden) hamburger that unlocks it.
+        const desktopQuery = window.matchMedia('(min-width: 769px)');
+        desktopQuery.addEventListener('change', (e) => {
+            if (e.matches) closeNav();
+        });
+    }
+
+    // Highlight whichever section is currently in view in the sidebar nav.
+    const sectionNavLinks = Array.from(document.querySelectorAll('.site-nav-list a[href^="#"]'));
+    const sectionTargets = sectionNavLinks
+        .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
+        .filter((entry) => entry.section);
+
+    if (sectionTargets.length && 'IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const match = sectionTargets.find((t) => t.section === entry.target);
+                if (!match) return;
+                sectionNavLinks.forEach((l) => l.classList.remove('active'));
+                match.link.classList.add('active');
+            });
+        }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+        sectionTargets.forEach(({ section }) => sectionObserver.observe(section));
+    }
+
     // GitHub Contributions Calendar
     async function initGitHubCalendar(username = 'adityamhaske', year = new Date().getFullYear()) {
         const calendarEl = document.getElementById('github-calendar') || document.querySelector('.calendar');
