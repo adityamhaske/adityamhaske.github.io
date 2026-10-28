@@ -92,35 +92,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Theme Toggle Logic
+    // Theme toggle: a role="switch" button, so its state is exposed through
+    // aria-checked; the visuals all key off [data-theme] in CSS.
     const themeToggle = document.getElementById('theme-toggle');
-    const themeLabel = themeToggle.querySelector('.theme-label');
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-    
-    // Check local storage for theme preference, default to 'light' if none
-    const currentTheme = localStorage.getItem("theme") || "light";
-    
-    if (currentTheme == "dark") {
-        document.documentElement.setAttribute("data-theme", "dark");
-        if(themeLabel) themeLabel.textContent = "Light";
-    }
+    const root = document.documentElement;
 
-    themeToggle.addEventListener("click", function() {
-        let theme = "light";
-        if (document.documentElement.getAttribute("data-theme") != "dark") {
-            document.documentElement.setAttribute("data-theme", "dark");
-            if(themeLabel) themeLabel.textContent = "Light";
-            theme = "dark";
-        } else {
-            document.documentElement.removeAttribute("data-theme");
-            if(themeLabel) themeLabel.textContent = "Dark";
-            theme = "light";
-        }
-        localStorage.setItem("theme", theme);
+    const applyTheme = (theme) => {
+        if (theme === 'dark') root.setAttribute('data-theme', 'dark');
+        else root.removeAttribute('data-theme');
+        themeToggle.setAttribute('aria-checked', String(theme === 'dark'));
+    };
+
+    applyTheme(localStorage.getItem('theme') || 'light');
+
+    themeToggle.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
     });
 
     // Mobile nav drawer — the sidebar doubles as an off-canvas menu under
-    // 769px, opened via the floating hamburger button.
+    // 1024px, opened via the floating hamburger button.
     const navToggle = document.getElementById('nav-toggle');
     const siteHeader = document.getElementById('site-header');
     const navBackdrop = document.getElementById('nav-backdrop');
@@ -158,56 +150,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Closing on link click only matters for the mobile drawer; on
         // desktop the sidebar is permanently docked, so this is a no-op.
-        siteHeader.querySelectorAll('.site-nav-list a').forEach((link) => {
+        // Every link counts, including the profile card's #top link.
+        siteHeader.querySelectorAll('a').forEach((link) => {
             link.addEventListener('click', closeNav);
         });
 
         // Resizing past the desktop breakpoint with the drawer open would
         // otherwise leave body scroll locked with no way to reach the
         // (now hidden) hamburger that unlocks it.
-        const desktopQuery = window.matchMedia('(min-width: 769px)');
+        const desktopQuery = window.matchMedia('(min-width: 1024px)');
         desktopQuery.addEventListener('change', (e) => {
             if (e.matches) closeNav();
         });
     }
 
     // Highlight whichever section is currently in view in the sidebar nav.
+    // The intro and footer are observed too, so scrolling to either end of
+    // the page clears the highlight instead of leaving a stale one.
     const sectionNavLinks = Array.from(document.querySelectorAll('.site-nav-list a[href^="#"]'));
     const sectionTargets = sectionNavLinks
         .map((link) => ({ link, section: document.querySelector(link.getAttribute('href')) }))
         .filter((entry) => entry.section);
+    const clearTargets = ['intro', 'contact']
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
 
     if (sectionTargets.length && 'IntersectionObserver' in window) {
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (!entry.isIntersecting) return;
+                sectionNavLinks.forEach((l) => {
+                    l.classList.remove('active');
+                    l.removeAttribute('aria-current');
+                });
                 const match = sectionTargets.find((t) => t.section === entry.target);
                 if (!match) return;
-                sectionNavLinks.forEach((l) => l.classList.remove('active'));
                 match.link.classList.add('active');
+                match.link.setAttribute('aria-current', 'location');
             });
         }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
 
         sectionTargets.forEach(({ section }) => sectionObserver.observe(section));
+        clearTargets.forEach((el) => sectionObserver.observe(el));
     }
 
-    // GitHub Contributions Calendar
-    async function initGitHubCalendar(username = 'adityamhaske', year = new Date().getFullYear()) {
+    // GitHub Contributions Calendar — a rolling last-12-months window, the
+    // same one GitHub's profile graph shows (?y=last returns the past year
+    // of days through today; the week padding below handles any start day).
+    async function initGitHubCalendar(username = 'adityamhaske') {
         const calendarEl = document.getElementById('github-calendar') || document.querySelector('.calendar');
         if (!calendarEl) return;
 
-        const yearLabelEl = document.getElementById('contrib-year');
-        if (yearLabelEl) yearLabelEl.textContent = `(${year})`;
-
-        const cacheKey = `github-contributions-${username}-${year}`;
+        const cacheKey = `github-contributions-${username}-last-year`;
         const cachedData = localStorage.getItem(cacheKey);
 
         function renderCalendar(data) {
             const contributions = data.contributions;
             if (!contributions || contributions.length === 0) return;
 
-            const total = data.total && data.total[year] !== undefined
-                ? data.total[year]
+            const total = data.total && data.total.lastYear !== undefined
+                ? data.total.lastYear
                 : contributions.reduce((s, c) => s + (c.count || 0), 0);
 
             // Update live contributions count on the hero stat card
@@ -253,6 +255,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             });
+            // A rolling window usually opens on the tail of a month; like
+            // GitHub, drop that label when it would collide with the next.
+            if (monthLabels.length > 1 && monthLabels[1].weekIndex - monthLabels[0].weekIndex < 3) {
+                monthLabels.shift();
+            }
 
             // Build SVG markup
             let svg = `<div class="calendar-graph"><svg class="js-calendar-graph-svg" width="100%" viewBox="0 0 740 125" style="overflow: visible;">\n`;
@@ -290,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Summary Footer & Legend
             const footer = `
                 <div class="calendar-footer">
-                    <span class="calendar-summary"><strong>${total.toLocaleString()}</strong> contributions in ${year}</span>
+                    <span class="calendar-summary"><strong>${total.toLocaleString()}</strong> contributions in the last year</span>
                     <div class="calendar-legend">
                         <span>Less</span>
                         <span class="legend-box" data-level="0"></span>
@@ -316,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=${year}`);
+            const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const data = await response.json();
             localStorage.setItem(cacheKey, JSON.stringify(data));
