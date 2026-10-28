@@ -371,8 +371,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap"
         rel="stylesheet">
+    <script>
+        // Apply a stored dark theme before first paint, so it doesn't flash
+        // light (or animate the theme switch) on every load.
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ctext%20y=%22.9em%22%20font-size=%2290%22%3EA%3C/text%3E%3C/svg%3E">
@@ -389,62 +394,79 @@
     <div id="nav-backdrop" class="nav-backdrop"></div>
     <header class="site-header" id="site-header">
         <div class="header-inner">
-            <div class="site-title"><a href="#top">ADITYA MHASKE</a></div>
+            <a href="#top" class="sidebar-profile">
+                <span class="avatar" aria-hidden="true">
+                    <svg class="bot" viewBox="0 0 64 64" width="60" height="60">
+                        <rect class="bot-tile" width="64" height="64" rx="16" />
+                        <g class="bot-zzz">
+                            <text x="44" y="19">z</text>
+                            <text x="51" y="12">z</text>
+                        </g>
+                        <rect class="bot-shoulders" x="19" y="51" width="26" height="15" rx="6" />
+                        <g class="bot-head-group">
+                            <line class="bot-antenna" x1="32" y1="12" x2="32" y2="19" />
+                            <circle class="bot-antenna-light" cx="32" cy="9.5" r="3.4" />
+                            <rect class="bot-ear" x="9.5" y="29" width="6" height="11" rx="3" />
+                            <rect class="bot-ear" x="48.5" y="29" width="6" height="11" rx="3" />
+                            <rect class="bot-head" x="14" y="19" width="36" height="30" rx="10" />
+                            <rect class="bot-screen" x="19" y="25" width="26" height="17" rx="6" />
+                            <g class="bot-eyes-open">
+                                <rect x="24" y="29.5" width="5" height="6.5" rx="2.5" />
+                                <rect x="35" y="29.5" width="5" height="6.5" rx="2.5" />
+                            </g>
+                            <g class="bot-eyes-sleep">
+                                <path d="M23.5 33 q3 2.6 6 0" />
+                                <path d="M34.5 33 q3 2.6 6 0" />
+                            </g>
+                            <path class="bot-mouth" d="M29 38.3 q3 1.8 6 0" />
+                        </g>
+                    </svg>
+                </span>
+                <span class="profile-name">Aditya Mhaske</span>
+                <span class="profile-role">Software Engineer &amp; Researcher</span>
+            </a>
             <nav class="site-nav" aria-label="Primary">
-                <ul class="site-nav-list">
+                <p class="nav-label" aria-hidden="true">// Navigate</p>
+                <ul class="site-nav-list" aria-label="Page sections">
                     <li><a href="#featured-projects">
-                            <svg class="nav-icon" viewBox="0 0 24 24" width="16" height="16" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                aria-hidden="true">
-                                <path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
-                            </svg>
-                            <span>Projects</span>
+                            <span class="nav-num">01</span>
+                            <span class="nav-text">Featured</span>
+                        </a></li>
+                    <li><a href="#contributions">
+                            <span class="nav-num">02</span>
+                            <span class="nav-text">Contributions</span>
+                        </a></li>
+                    <li><a href="#all-projects">
+                            <span class="nav-num">03</span>
+                            <span class="nav-text">Repositories</span>
                         </a></li>
                     <li><a href="#research">
-                            <svg class="nav-icon" viewBox="0 0 24 24" width="16" height="16" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                aria-hidden="true">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <polyline points="14 2 14 8 20 8" />
-                                <line x1="8" y1="13" x2="16" y2="13" />
-                                <line x1="8" y1="17" x2="16" y2="17" />
-                            </svg>
-                            <span>Research</span>
+                            <span class="nav-num">04</span>
+                            <span class="nav-text">Publications</span>
                         </a></li>
-                    <li><a href="#contact">
-                            <svg class="nav-icon" viewBox="0 0 24 24" width="16" height="16" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                aria-hidden="true">
-                                <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
-                                <polyline points="22 6 12 13 2 6" />
-                            </svg>
-                            <span>Contact</span>
-                        </a></li>
+                </ul>
+                <hr class="nav-divider">
+                <p class="nav-label" aria-hidden="true">// Elsewhere</p>
+                <ul class="site-nav-list site-links" aria-label="Profiles">
                     <li><a href="https://github.com/adityamhaske" target="_blank" rel="noopener noreferrer">
-                            <svg class="nav-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"
-                                aria-hidden="true">
-                                <path
-                                    d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.94.57.1.78-.25.78-.55v-2.17c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.74.4-1.25.73-1.54-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16v3.2c0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z" />
-                            </svg>
-                            <span>GitHub ↗</span>
+                            <span class="nav-text">GitHub</span>
+                            <span class="ext-arrow" aria-hidden="true">↗</span>
                         </a></li>
-                    <li><a href="https://adityamhaske.com" target="_blank" rel="noopener noreferrer"
-                            class="portfolio-link" title="Full portfolio">
-                            <svg class="nav-icon" viewBox="0 0 24 24" width="16" height="16" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                aria-hidden="true">
-                                <rect x="2" y="7" width="20" height="14" rx="2" />
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                            </svg>
-                            <span>Portfolio ↗</span>
+                    <li><a href="https://adityamhaske.com" target="_blank" rel="noopener noreferrer">
+                            <span class="nav-text">Portfolio</span>
+                            <span class="ext-arrow" aria-hidden="true">↗</span>
+                        </a></li>
+                    <li><a href="https://linkedin.com/in/adityamhaske" target="_blank" rel="noopener noreferrer">
+                            <span class="nav-text">LinkedIn</span>
+                            <span class="ext-arrow" aria-hidden="true">↗</span>
                         </a></li>
                 </ul>
             </nav>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                <span class="theme-label">Dark</span>
-                <span class="toggle-track">
-                    <span class="toggle-thumb"></span>
-                </span>
+            <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false"
+                aria-label="Dark mode">
+                <span class="theme-toggle-thumb" aria-hidden="true"></span>
+                <span class="theme-option theme-option-light" aria-hidden="true"><svg class="theme-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5" /><line x1="12" y1="1.5" x2="12" y2="3.5" /><line x1="12" y1="20.5" x2="12" y2="22.5" /><line x1="4.6" y1="4.6" x2="6" y2="6" /><line x1="18" y1="18" x2="19.4" y2="19.4" /><line x1="1.5" y1="12" x2="3.5" y2="12" /><line x1="20.5" y1="12" x2="22.5" y2="12" /><line x1="4.6" y1="19.4" x2="6" y2="18" /><line x1="18" y1="6" x2="19.4" y2="4.6" /></svg>Light</span>
+                <span class="theme-option theme-option-dark" aria-hidden="true"><svg class="theme-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>Dark</span>
             </button>
         </div>
     </header>
@@ -455,7 +477,7 @@
             <div class="hero-main-row">
                 <div class="hero-header">
                     <h1 class="hero-name">Aditya Mhaske</h1>
-                    <div class="hero-subtitle">Engineer &amp; Researcher</div>
+                    <div class="hero-subtitle">Software Engineer &amp; Researcher</div>
                     <p class="hero-bio">
                         Specializing in Multi-Agent Orchestration, LLM Evaluation Harnesses, and Multimodal Edge/Cloud AI
                         Architecture.
@@ -620,8 +642,8 @@
         <section id="contributions" class="section-contributions">
             <div class="section-header">
                 <span class="section-number">02</span>
-                <h2>GitHub Contributions <span id="contrib-year"
-                        style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);"></span></h2>
+                <h2>GitHub Contributions <span
+                        style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">(last 12 months)</span></h2>
             </div>
             <div class="calendar" id="github-calendar">
                 <div class="calendar-loading">
@@ -819,7 +841,7 @@
                                 <div class="table-repo-header">
                                     <span class="table-domain-badge">MULTIMODAL AI</span>
                                     <a href="https://github.com/adityamhaske/Multimodal_Depression_Analysis" target="_blank" rel="noopener noreferrer"
-                                        class="table-repo-link">Multimodal_Depression_Analysis</a>
+                                        class="table-repo-link">Multimodal_<wbr>Depression_<wbr>Analysis</a>
                                 </div>
                             </td>
                             <td class="repo-desc-col">Multimodal behavioral analysis platform combining facial micro-expression telemetry and acoustic signal processing for mental health markers.</td>
@@ -840,7 +862,7 @@
                                 <div class="table-repo-header">
                                     <span class="table-domain-badge">DATA PIPELINE</span>
                                     <a href="https://github.com/adityamhaske/BMR-ML-Pipeline_DBMS" target="_blank" rel="noopener noreferrer"
-                                        class="table-repo-link">BMR-ML-Pipeline_DBMS</a>
+                                        class="table-repo-link">BMR-ML-Pipeline_<wbr>DBMS</a>
                                 </div>
                             </td>
                             <td class="repo-desc-col">End-to-end ML data pipelines, relational database architecture in Oracle SQL, and business intelligence dashboards in Tableau.</td>
@@ -861,7 +883,7 @@
                                 <div class="table-repo-header">
                                     <span class="table-domain-badge">PREDICTIVE ML</span>
                                     <a href="https://github.com/adityamhaske/Cardiovascular_disease_prediction" target="_blank" rel="noopener noreferrer"
-                                        class="table-repo-link">Cardiovascular_disease_prediction</a>
+                                        class="table-repo-link">Cardiovascular_<wbr>disease_<wbr>prediction</a>
                                 </div>
                             </td>
                             <td class="repo-desc-col">Supervised machine learning pipeline evaluating classification model ensembles for high-sensitivity cardiovascular disease risk prediction.</td>
@@ -980,6 +1002,7 @@
                 </div>
             </div>
 
+            <div class="research-list-container">
             <table class="research-table">
                 <tbody id="research-list-body">
                     <tr class="research-row" data-type="patent">
@@ -1071,6 +1094,7 @@
                 </tbody>
             </table>
             <div id="research-no-results" class="no-results hidden">No items match your filters.</div>
+            </div>
         </section>
     </main>
 
@@ -1079,7 +1103,7 @@
             <div class="footer-col footer-col-identity">
                 <div class="footer-brand">
                     <span class="footer-name">Aditya Mhaske</span>
-                    <span class="footer-role">Engineer &amp; Researcher</span>
+                    <span class="footer-role">Software Engineer &amp; Researcher</span>
                 </div>
 
                 <div class="footer-status">
