@@ -15,6 +15,7 @@
     /* Spacing */
     --baseline: 1.5rem;
     --container-width: 900px;
+    --sidebar-width: 240px;
     --header-bg: rgba(247, 245, 240, 0.95);
     --table-hover: rgba(0, 0, 0, 0.03);
 }
@@ -77,7 +78,29 @@ a:focus-visible {
     font-family: var(--font-mono);
 }
 
-/* Layout */
+/* Skip link: hidden until keyboard-focused, so keyboard/AT users and
+   crawlers can bypass the sidebar nav straight to the main content. */
+.skip-link {
+    position: absolute;
+    top: -3rem;
+    left: 0;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 0.6rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1000;
+    transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Layout — mobile-first: a sticky top bar by default. The
+   min-width:769px block below turns it into a fixed left sidebar. */
 .site-header {
     position: sticky;
     top: 0;
@@ -106,7 +129,17 @@ a:focus-visible {
     text-transform: uppercase;
 }
 
-.site-nav a,
+.site-title a {
+    color: var(--text-primary);
+}
+
+.site-title a:hover,
+.site-title a:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.site-nav-list a,
 .theme-toggle {
     display: flex;
     align-items: center;
@@ -152,31 +185,32 @@ a:focus-visible {
     background-color: var(--bg-color);
 }
 
-.site-nav a:hover,
-.site-nav a:focus,
+.site-nav-list a:hover,
+.site-nav-list a:focus,
 .theme-toggle:hover {
     color: var(--text-primary);
     text-decoration: none;
 }
 
 .site-nav {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
     font-family: var(--font-mono);
     font-size: 0.85rem;
 }
 
-.site-nav a {
+.site-nav-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.site-nav-list a {
     color: var(--text-primary);
 }
 
-.site-nav a:hover {
+.site-nav-list a:hover {
     color: var(--accent-color);
-}
-
-.nav-separator {
-    color: var(--border-color);
 }
 
 .portfolio-link {
@@ -191,6 +225,69 @@ main {
     max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 1.5rem 4rem;
+}
+
+/* Desktop/tablet: the top bar becomes a fixed vertical sidebar. Mobile
+   keeps the simpler sticky top bar above — a full-height fixed sidebar
+   doesn't work on narrow screens, so this is intentionally gated to
+   wider viewports rather than built with a JS-driven collapse. */
+@media (min-width: 769px) {
+    .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: var(--sidebar-width);
+        background-color: var(--bg-color);
+        backdrop-filter: none;
+        border-bottom: none;
+        border-right: 1px solid var(--border-color);
+        overflow-y: auto;
+    }
+
+    .header-inner {
+        max-width: none;
+        height: 100%;
+        margin: 0;
+        padding: 2rem 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        gap: 2rem;
+    }
+
+    .site-nav {
+        width: 100%;
+    }
+
+    .site-nav-list {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.1rem;
+    }
+
+    .site-nav-list a {
+        width: 100%;
+        padding: 0.15rem 0 0.15rem 0.75rem;
+        border-left: 2px solid transparent;
+    }
+
+    .site-nav-list a:hover,
+    .site-nav-list a:focus-visible {
+        border-left-color: var(--accent-color);
+        background-color: var(--table-hover);
+    }
+
+    .theme-toggle {
+        width: 100%;
+        margin-top: auto;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .page-body {
+        margin-left: var(--sidebar-width);
+    }
 }
 
 /* Sections */
@@ -1123,11 +1220,9 @@ section:last-of-type {
     .site-nav {
         width: 100%;
         margin-top: 1rem;
-        gap: 1rem;
-        flex-wrap: wrap;
     }
-    .nav-separator {
-        display: none;
+    .site-nav-list {
+        gap: 1rem;
     }
     .hero-main-row {
         flex-direction: column-reverse;
