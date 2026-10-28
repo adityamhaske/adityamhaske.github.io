@@ -1,19 +1,19 @@
 :root {
-    /* Colors: clean paper-white with an indigo lead and three bright
-       secondaries (teal, amber, rose) used for categories and stats. */
-    --bg-color: #F7F8FC;
-    --text-primary: #161A2E;
-    --text-muted: #555B73;
-    --accent-color: #4F46E5;
-    --accent-hover: #4338CA;
-    --border-color: #D9DCE8;
+    /* Colors: warm white with an emerald lead, plus crimson and gold
+       secondaries used for categories and stats. */
+    --bg-color: #FAFAF7;
+    --text-primary: #1A1A18;
+    --text-muted: #57574F;
+    --accent-color: #047857;
+    --accent-hover: #065F46;
+    --border-color: #DEDCD5;
 
-    --joy-teal: #0F766E;
-    --joy-amber: #B45309;
     --joy-rose: #BE123C;
-    --joy-teal-tint: rgba(15, 118, 110, 0.1);
-    --joy-amber-tint: rgba(217, 119, 6, 0.12);
+    --joy-gold: #A16207;
+    --joy-stone: #44403C;
     --joy-rose-tint: rgba(225, 29, 72, 0.09);
+    --joy-gold-tint: rgba(234, 179, 8, 0.16);
+    --joy-stone-tint: rgba(68, 64, 60, 0.08);
 
     /* Typography */
     --font-heading: 'Source Serif 4', serif;
@@ -24,7 +24,7 @@
     --baseline: 1.5rem;
     --container-width: 900px;
     --sidebar-width: 264px;
-    --header-bg: rgba(247, 248, 252, 0.95);
+    --header-bg: rgba(250, 250, 247, 0.95);
     --table-hover: rgba(0, 0, 0, 0.03);
 
     /* Shape: square corners everywhere */
@@ -34,39 +34,39 @@
     --radius-pill: 0;
 
     /* Surfaces */
-    --sidebar-bg: #EEF0F8;
+    --sidebar-bg: #F1F0EB;
     --surface: #FFFFFF;
-    --surface-2: #F0F2F9;
-    --surface-hover: rgba(79, 70, 229, 0.06);
-    --accent-tint: rgba(79, 70, 229, 0.1);
-    --ink: #4F46E5; /* active states: solid accent block */
+    --surface-2: #F3F2ED;
+    --surface-hover: rgba(4, 120, 87, 0.06);
+    --accent-tint: rgba(4, 120, 87, 0.1);
+    --ink: #047857; /* active states: solid accent block */
     --ink-contrast: #FFFFFF;
 }
 
 [data-theme="dark"] {
-    --bg-color: #0E1018;
-    --text-primary: #E7E9F3;
-    --text-muted: #A1A7BD;
-    --accent-color: #A5B4FC;
-    --accent-hover: #C7D2FE;
-    --border-color: #2B3044;
-    --header-bg: rgba(14, 16, 24, 0.95);
+    --bg-color: #111110;
+    --text-primary: #ECEBE6;
+    --text-muted: #A8A69E;
+    --accent-color: #6EE7B7;
+    --accent-hover: #A7F3D0;
+    --border-color: #2E2D2A;
+    --header-bg: rgba(17, 17, 16, 0.95);
     --table-hover: rgba(255, 255, 255, 0.05);
 
-    --joy-teal: #5EEAD4;
-    --joy-amber: #FCD34D;
     --joy-rose: #FDA4AF;
-    --joy-teal-tint: rgba(94, 234, 212, 0.12);
-    --joy-amber-tint: rgba(252, 211, 77, 0.12);
+    --joy-gold: #FDE047;
+    --joy-stone: #D6D3D1;
     --joy-rose-tint: rgba(253, 164, 175, 0.12);
+    --joy-gold-tint: rgba(253, 224, 71, 0.12);
+    --joy-stone-tint: rgba(214, 211, 209, 0.1);
 
-    --sidebar-bg: #121520;
-    --surface: #161925;
-    --surface-2: #1E2231;
-    --surface-hover: rgba(165, 180, 252, 0.08);
-    --accent-tint: rgba(165, 180, 252, 0.14);
-    --ink: #A5B4FC;
-    --ink-contrast: #0E1018;
+    --sidebar-bg: #151514;
+    --surface: #1A1A19;
+    --surface-2: #232321;
+    --surface-hover: rgba(110, 231, 183, 0.07);
+    --accent-tint: rgba(110, 231, 183, 0.12);
+    --ink: #6EE7B7;
+    --ink-contrast: #111110;
 }
 
 /* Reset & Base */
@@ -557,7 +557,7 @@ section:last-of-type {
    - chips: case-preserving mono labels (tech stack, focus areas)
    - buttons: filters and back-to-top; active = solid accent block, the
      same treatment as the sidebar's current section and theme switch
-   Categories and stats pick up the teal, amber and rose secondaries. */
+   Categories and stats pick up the crimson and gold secondaries. */
 .hero-stat-card,
 .featured-card,
 .calendar,
@@ -597,21 +597,21 @@ section:last-of-type {
 
 [data-category="vision-multimodal"] .table-domain-badge,
 .research-badge-paper {
-    color: var(--joy-teal);
-    background-color: var(--joy-teal-tint);
+    color: var(--joy-rose);
+    background-color: var(--joy-rose-tint);
     border-color: transparent;
 }
 
 [data-category="ml-data"] .table-domain-badge,
 .research-badge-patent {
-    color: var(--joy-amber);
-    background-color: var(--joy-amber-tint);
+    color: var(--joy-gold);
+    background-color: var(--joy-gold-tint);
     border-color: transparent;
 }
 
 [data-category="systems-edge"] .table-domain-badge {
-    color: var(--joy-rose);
-    background-color: var(--joy-rose-tint);
+    color: var(--joy-stone);
+    background-color: var(--joy-stone-tint);
     border-color: transparent;
 }
 
@@ -763,13 +763,13 @@ section:last-of-type {
 }
 
 .hero-stat-card:nth-child(2) {
-    --stat-color: var(--joy-teal);
-    --stat-tint: var(--joy-teal-tint);
+    --stat-color: var(--joy-rose);
+    --stat-tint: var(--joy-rose-tint);
 }
 
 .hero-stat-card:nth-child(3) {
-    --stat-color: var(--joy-amber);
-    --stat-tint: var(--joy-amber-tint);
+    --stat-color: var(--joy-gold);
+    --stat-tint: var(--joy-gold-tint);
 }
 
 .hero-stat-card .stat-number {
@@ -1352,120 +1352,6 @@ section:last-of-type {
     color: var(--text-muted);
 }
 
-.footer-status {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-    padding: 1.4rem 1.4rem 1.3rem;
-    border: 1px solid var(--border-color);
-    background:
-        linear-gradient(135deg, var(--accent-tint), transparent 55%),
-        linear-gradient(315deg, var(--joy-teal-tint), transparent 50%),
-        var(--surface);
-}
-
-/* Three-color rule across the top of the card. */
-.footer-status::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    right: -1px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color) 0 33.3%, var(--joy-teal) 33.3% 66.6%, var(--joy-amber) 66.6%);
-}
-
-.status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.25rem 0.6rem;
-    border: 1px solid rgba(22, 163, 74, 0.35);
-    background-color: rgba(22, 163, 74, 0.1);
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #15803D;
-}
-
-[data-theme="dark"] .status-badge {
-    color: #86EFAC;
-}
-
-.status-text {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    color: var(--text-primary);
-}
-
-.status-areas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-}
-
-.status-area {
-    padding: 0.2rem 0.55rem;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 600;
-}
-
-.area-indigo { color: var(--accent-color); background-color: var(--accent-tint); }
-.area-teal { color: var(--joy-teal); background-color: var(--joy-teal-tint); }
-.area-amber { color: var(--joy-amber); background-color: var(--joy-amber-tint); }
-
-.status-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.2rem;
-    padding: 0.55rem 1rem;
-    background-color: var(--accent-color);
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--ink-contrast);
-    transition: background-color 0.15s ease;
-}
-
-.status-cta:hover,
-.status-cta:focus-visible {
-    color: var(--ink-contrast);
-    background-color: var(--accent-hover);
-    text-decoration: none;
-}
-
-.status-cta span {
-    transition: transform 0.15s ease;
-}
-
-.status-cta:hover span {
-    transform: translateX(3px);
-}
-
-.status-dot {
-    flex-shrink: 0;
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    background-color: #16A34A;
-    animation: statusPulse 2s infinite ease-in-out;
-}
-
-@keyframes statusPulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.25); opacity: 0.75; }
-}
-
 .footer-nav-list {
     list-style: none;
     display: flex;
@@ -1474,18 +1360,27 @@ section:last-of-type {
 }
 
 .footer-nav-list a {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--border-color);
     font-family: var(--font-body);
     font-size: 0.92rem;
     font-weight: 500;
     color: var(--text-primary);
-    transition: color 0.15s ease, transform 0.15s ease;
+    transition: color 0.15s ease;
+}
+
+/* Arrow boxes line up in one column on the right edge. */
+.footer-nav-list .ext-arrow {
+    margin-left: auto;
 }
 
 .footer-nav-list a:hover {
     color: var(--accent-color);
     text-decoration: none;
-    transform: translateX(3px);
 }
 
 .footer-telemetry {
