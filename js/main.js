@@ -92,6 +92,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Hero stat cards for papers and patents also pre-filter the research
+    // list; the link's own href handles the scroll.
+    document.querySelectorAll('.hero-stat-card[data-research-filter]').forEach(card => {
+        card.addEventListener('click', () => {
+            const btn = document.querySelector(`#research-filters .filter-btn[data-type="${card.dataset.researchFilter}"]`);
+            if (btn) btn.click();
+        });
+    });
+
     // Theme toggle: a role="switch" button, so its state is exposed through
     // aria-checked; the visuals all key off [data-theme] in CSS.
     const themeToggle = document.getElementById('theme-toggle');
@@ -287,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const formattedDate = dateObj.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
                     const countText = day.count === 0 ? "No contributions" : `${day.count} contribution${day.count > 1 ? "s" : ""}`;
                     const title = `${countText} on ${formattedDate}`;
-                    svg += `      <rect class="ContributionCalendar-day" width="10" height="10" x="0" y="${gy}" rx="2" ry="2" data-date="${day.date}" data-level="${day.level}" data-count="${day.count}"><title>${title}</title></rect>\n`;
+                    svg += `      <rect class="ContributionCalendar-day" width="10" height="10" x="0" y="${gy}" data-date="${day.date}" data-level="${day.level}" data-count="${day.count}"><title>${title}</title></rect>\n`;
                 });
                 svg += `    </g>\n`;
             });
@@ -334,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 calendarEl.innerHTML = `
                     <div style="text-align: center; padding: 1.5rem; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem;">
                         Unable to load live contribution graph. 
-                        <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: underline;">View on GitHub ↗</a>
+                        <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: underline;">View on GitHub</a>
                     </div>
                 `;
             }

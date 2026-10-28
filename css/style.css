@@ -19,11 +19,11 @@
     --header-bg: rgba(247, 245, 240, 0.95);
     --table-hover: rgba(0, 0, 0, 0.03);
 
-    /* Shape scale, shared by every card, control and tag */
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 16px;
-    --radius-pill: 999px;
+    /* Shape: square corners everywhere */
+    --radius-sm: 0;
+    --radius-md: 0;
+    --radius-lg: 0;
+    --radius-pill: 0;
 
     /* Surfaces */
     --sidebar-bg: #EFEBE3;
@@ -31,20 +31,8 @@
     --surface-2: #F1EDE6;
     --surface-hover: rgba(122, 26, 26, 0.06);
     --accent-tint: rgba(122, 26, 26, 0.08);
-    --shadow-hover: 0 16px 32px -22px rgba(0, 0, 0, 0.4);
-    --accent-contrast: #FFFFFF; /* text on a solid accent fill */
-    --accent-glow: rgba(122, 26, 26, 0.35);
-    --sun-color: #D97706;
-    --moon-color: #6366F1;
-
-    /* Sidebar avatar (awake in light mode) */
-    --avatar-bg: #CDE5F7;
-    --avatar-head: #FFFFFF;
-    --avatar-ink: #1C1C1C;
-    --avatar-screen: #1E293B;
-    --avatar-eye: #5EEAD4;
-    --avatar-light: #E2553F;
-    --avatar-accent: #E56B4E;
+    --ink: #1C1C1C; /* active states: ink block with paper text */
+    --ink-contrast: #F7F5F0;
 }
 
 [data-theme="dark"] {
@@ -62,21 +50,8 @@
     --surface-2: #242424;
     --surface-hover: rgba(229, 115, 115, 0.08);
     --accent-tint: rgba(229, 115, 115, 0.12);
-    --shadow-hover: 0 16px 32px -20px rgba(0, 0, 0, 0.85);
-    --accent-contrast: #121212; /* #E57373 is too light for white text */
-    --accent-glow: rgba(229, 115, 115, 0.35);
-    --sun-color: #FBBF24;
-    --moon-color: #A5B4FC;
-
-    /* Sidebar avatar (asleep in dark mode) */
-    --avatar-bg: #1B2540;
-    --avatar-head: #DCE3EE;
-    --avatar-ink: #0A0F1C;
-    --avatar-screen: #0F172A;
-    --avatar-eye: #93C5FD;
-    --avatar-light: #475569;
-    --avatar-accent: #C2553F;
-    --avatar-zzz: #C7D2FE;
+    --ink: #E8E6E1;
+    --ink-contrast: #121212;
 }
 
 /* Reset & Base */
@@ -185,131 +160,44 @@ a:focus-visible {
     min-height: 100%;
     /* Extra top clearance on mobile so content starts below the floating
        hamburger button; tightened once that button is hidden. */
-    padding: 4.75rem 1rem 1.25rem;
+    padding: 5rem 1.25rem 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2.25rem;
 }
 
-/* Profile card */
+/* Profile */
 .sidebar-profile {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.2rem;
-    padding: 1rem;
-    border-radius: var(--radius-lg);
-    background-color: var(--surface);
-    border: 1px solid var(--border-color);
+    gap: 0.35rem;
+    padding: 0 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
     color: var(--text-primary);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .sidebar-profile:hover,
 .sidebar-profile:focus-visible {
     color: var(--text-primary);
     text-decoration: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 12px 26px -16px var(--accent-glow);
-    transform: translateY(-1px);
-}
-
-.avatar {
-    display: block;
-    width: 60px;
-    height: 60px;
-    margin-bottom: 0.7rem;
-    border-radius: var(--radius-lg);
-    box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.45);
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.sidebar-profile:hover .avatar {
-    transform: rotate(-6deg) scale(1.06);
-}
-
-.bot {
-    display: block;
 }
 
 .profile-name {
     font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 700;
     line-height: 1.15;
+    letter-spacing: -0.01em;
 }
 
 .profile-role {
     font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 600;
+    font-size: 0.64rem;
+    font-weight: 500;
     line-height: 1.5;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent-color);
-}
-
-/* Animated avatar: an awake, blinking bot in light mode that dozes off
-   (closed eyes, floating z's) in dark mode. Colors come from the
-   --avatar-* tokens, which the theme swaps. */
-.bot-tile { fill: var(--avatar-bg); }
-.bot-antenna { stroke: var(--avatar-ink); stroke-width: 2.5; stroke-linecap: round; }
-.bot-antenna-light { fill: var(--avatar-light); }
-.bot-ear,
-.bot-shoulders { fill: var(--avatar-accent); stroke: var(--avatar-ink); stroke-width: 2.5; }
-.bot-head { fill: var(--avatar-head); stroke: var(--avatar-ink); stroke-width: 2.5; }
-.bot-screen { fill: var(--avatar-screen); }
-.bot-eyes-open rect { fill: var(--avatar-eye); }
-.bot-eyes-sleep path,
-.bot-mouth { fill: none; stroke: var(--avatar-eye); stroke-width: 2; stroke-linecap: round; }
-.bot-zzz text { fill: var(--avatar-zzz); font-family: var(--font-mono); font-size: 9px; font-weight: 700; }
-
-.bot-head-group,
-.bot-eyes-open,
-.bot-zzz text {
-    transform-box: fill-box;
-    transform-origin: center;
-}
-
-.bot-head-group { animation: bot-bob 3.2s ease-in-out infinite; }
-.bot-eyes-open { animation: bot-blink 4.5s ease-in-out infinite; }
-.bot-antenna-light { animation: bot-pulse 1.8s ease-in-out infinite; }
-.bot-zzz text { animation: bot-snooze 2.6s ease-in infinite; }
-.bot-zzz text:nth-child(2) { animation-delay: 1.3s; }
-
-.bot-eyes-sleep,
-.bot-zzz { display: none; }
-
-[data-theme="dark"] .bot-eyes-open { display: none; }
-[data-theme="dark"] .bot-eyes-sleep,
-[data-theme="dark"] .bot-zzz { display: inline; }
-[data-theme="dark"] .bot-head-group { animation: bot-breathe 4.8s ease-in-out infinite; }
-[data-theme="dark"] .bot-antenna-light { animation: none; }
-
-@keyframes bot-bob {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-1.5px); }
-}
-
-@keyframes bot-breathe {
-    0%, 100% { transform: translateY(0.5px) scale(1); }
-    50% { transform: translateY(1.5px) scale(0.985); }
-}
-
-@keyframes bot-blink {
-    0%, 90%, 100% { transform: scaleY(1); }
-    94% { transform: scaleY(0.1); }
-}
-
-@keyframes bot-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.35; }
-}
-
-@keyframes bot-snooze {
-    0% { opacity: 0; transform: translate(0, 2px) scale(0.7); }
-    25% { opacity: 1; }
-    100% { opacity: 0; transform: translate(5px, -9px) scale(1.15); }
 }
 
 /* Navigation */
@@ -317,16 +205,16 @@ a:focus-visible {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.4rem;
 }
 
 .nav-label {
     padding: 0 0.75rem;
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.2rem;
     font-family: var(--font-mono);
-    font-size: 0.64rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--text-muted);
 }
@@ -335,153 +223,181 @@ a:focus-visible {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 2px;
 }
 
 .site-nav-list a {
     display: flex;
     align-items: center;
-    gap: 0.7rem;
+    gap: 0.8rem;
     width: 100%;
     padding: 0.6rem 0.75rem;
-    border-radius: var(--radius-md);
+    border-left: 2px solid transparent;
     font-family: var(--font-body);
-    font-size: 0.94rem;
-    font-weight: 600;
+    font-size: 0.92rem;
+    font-weight: 500;
     color: var(--text-primary);
-    transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
 
 .nav-num {
     min-width: 1.35rem;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 600;
+    font-size: 0.66rem;
     color: var(--text-muted);
     transition: color 0.18s ease;
 }
-
 
 .site-nav-list a:hover,
 .site-nav-list a:focus-visible {
     color: var(--text-primary);
     text-decoration: none;
     background-color: var(--surface-hover);
-    transform: translateX(3px);
 }
 
-
+/* Current section: an ink block, the same treatment as active filters. */
 .site-nav-list a.active {
-    color: var(--accent-contrast);
-    background-color: var(--accent-color);
-    box-shadow: 0 10px 22px -12px var(--accent-glow);
-    transform: none;
+    color: var(--ink-contrast);
+    background-color: var(--ink);
+    border-left-color: var(--accent-color);
 }
 
 .site-nav-list a.active .nav-num {
-    color: var(--accent-contrast);
-    opacity: 0.85;
+    color: var(--ink-contrast);
+    opacity: 0.7;
 }
 
 .nav-divider {
-    margin: 0.9rem 0.75rem 0.6rem;
+    margin: 1.1rem 0.75rem 0.8rem;
     border: 0;
-    border-top: 2px dashed var(--text-muted);
-    opacity: 0.35;
+    border-top: 1px dashed var(--border-color);
 }
 
 .site-links a {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
-    font-weight: 500;
     color: var(--text-muted);
 }
 
+/* Outbound-link marker: a small square box with an arrow, used on every
+   external link. Sized in em so it follows the surrounding text. */
 .ext-arrow {
-    margin-left: auto;
-    opacity: 0.45;
-    transition: transform 0.18s ease, opacity 0.18s ease, color 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.35em;
+    height: 1.35em;
+    margin-left: 0.35em;
+    vertical-align: -0.3em;
+    border: 1px solid currentColor;
+    opacity: 0.55;
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
 }
 
-.site-links a:hover .ext-arrow,
-.site-links a:focus-visible .ext-arrow {
+.ext-arrow svg {
+    width: 0.75em;
+    height: 0.75em;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: square;
+}
+
+a:hover > .ext-arrow,
+a:focus-visible > .ext-arrow {
     opacity: 1;
-    color: var(--accent-color);
-    transform: translate(2px, -2px);
+    color: var(--ink-contrast);
+    background-color: var(--ink);
+    border-color: var(--ink);
 }
 
-/* Theme switch: a segmented Light/Dark pill with a sliding thumb. */
+.site-links .ext-arrow {
+    margin-left: auto;
+    font-size: 0.85rem;
+}
+
+/* Theme switch: a "Dark mode" label with a small square track. */
 .theme-toggle {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     margin-top: auto;
-    padding: 4px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-pill);
-    background-color: var(--surface);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 0.85rem 0.75rem 0;
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    background: none;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     cursor: pointer;
+    transition: color 0.18s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--text-primary);
 }
 
 .theme-toggle:focus-visible {
     outline: 2px solid var(--accent-color);
-    outline-offset: 3px;
+    outline-offset: 4px;
 }
 
-.theme-toggle-thumb {
-    position: absolute;
-    top: 4px;
-    bottom: 4px;
-    left: 4px;
-    width: calc(50% - 4px);
-    border-radius: var(--radius-pill);
-    background-color: var(--accent-color);
-    box-shadow: 0 6px 14px -6px var(--accent-glow);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-[data-theme="dark"] .theme-toggle-thumb {
-    transform: translateX(100%);
-}
-
-.theme-option {
-    position: relative;
-    z-index: 1;
-    display: flex;
+.theme-label {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    padding: 0.5rem 0;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    transition: color 0.25s ease;
+    gap: 0.6rem;
 }
 
 .theme-icon {
-    transition: transform 0.5s ease;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
-.theme-option-light .theme-icon { color: var(--sun-color); }
-.theme-option-dark .theme-icon { color: var(--moon-color); }
-
-html:not([data-theme="dark"]) .theme-option-light,
-html:not([data-theme="dark"]) .theme-option-light .theme-icon,
-[data-theme="dark"] .theme-option-dark,
-[data-theme="dark"] .theme-option-dark .theme-icon {
-    color: var(--accent-contrast);
+.theme-icon-moon,
+[data-theme="dark"] .theme-icon-sun {
+    display: none;
 }
 
-html:not([data-theme="dark"]) .theme-option-light .theme-icon { transform: rotate(90deg); }
-[data-theme="dark"] .theme-option-dark .theme-icon { transform: rotate(-20deg); }
+[data-theme="dark"] .theme-icon-moon {
+    display: block;
+}
+
+.theme-switch {
+    position: relative;
+    width: 34px;
+    height: 18px;
+    border: 1px solid var(--text-muted);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-switch-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--text-muted);
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.2s ease;
+}
+
+[data-theme="dark"] .theme-switch {
+    background-color: var(--ink);
+    border-color: var(--ink);
+}
+
+[data-theme="dark"] .theme-switch-knob {
+    transform: translateX(16px);
+    background-color: var(--ink-contrast);
+}
 
 /* Honor reduced motion site-wide: every animation and transition,
-   including the drawer slide and hover lifts. */
+   including the drawer slide and hover effects. */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -500,7 +416,7 @@ main {
 
 /* Clears the floating hamburger button below the desktop breakpoint. */
 .page-body {
-    padding-top: 3rem;
+    padding-top: 4rem;
 }
 
 /* Hamburger trigger — floats top-left, independent of the drawer's own
@@ -519,14 +435,12 @@ main {
     gap: 5px;
     background-color: var(--surface);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
     cursor: pointer;
-    box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.35);
     transition: border-color 0.2s ease;
 }
 
 .nav-toggle:hover {
-    border-color: var(--accent-color);
+    border-color: var(--text-primary);
 }
 
 .nav-toggle span {
@@ -534,7 +448,6 @@ main {
     width: 18px;
     height: 2px;
     background-color: var(--text-primary);
-    border-radius: 1px;
     transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -578,12 +491,12 @@ main {
     }
 
     .header-inner {
-        padding: 1.5rem 1rem 1.25rem;
+        padding: 3rem 1.25rem 1.5rem;
     }
 
     .page-body {
         margin-left: var(--sidebar-width);
-        padding-top: 0;
+        padding-top: 2.5rem;
     }
 
     .nav-toggle,
@@ -627,8 +540,8 @@ section:last-of-type {
    - cards: one surface, border and radius
    - tags: small uppercase mono labels, neutral or accent-tinted
    - chips: case-preserving mono labels (tech stack, focus areas)
-   - pill buttons: filters and back-to-top; active = solid accent, the
-     same treatment as the sidebar's current section and theme switch */
+   - buttons: filters and back-to-top; active = ink block, the same
+     treatment as the sidebar's current section and theme switch */
 .hero-stat-card,
 .featured-card,
 .calendar,
@@ -705,14 +618,14 @@ section:last-of-type {
 .filter-btn:hover,
 .back-to-top-btn:hover {
     color: var(--text-primary);
-    border-color: var(--accent-color);
+    border-color: var(--text-primary);
     text-decoration: none;
 }
 
 .filter-btn.active {
-    color: var(--accent-contrast);
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
+    color: var(--ink-contrast);
+    background-color: var(--ink);
+    border-color: var(--ink);
 }
 
 .filter-btn .btn-count {
@@ -722,7 +635,7 @@ section:last-of-type {
 
 /* Hero */
 .hero-section {
-    padding: 3.5rem 0 2.5rem;
+    padding: 3rem 0 2.5rem;
 }
 
 .hero-main-row {
@@ -773,9 +686,6 @@ section:last-of-type {
     height: 180px;
     object-fit: cover;
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    box-shadow: 0 16px 32px -22px rgba(0, 0, 0, 0.45);
-    transition: transform 0.25s ease;
 }
 
 .hero-sticker-img.sticker-dark {
@@ -794,9 +704,6 @@ section:last-of-type {
     display: none;
 }
 
-.hero-sticker-img:hover {
-    transform: rotate(2deg) scale(1.03);
-}
 
 .hero-stats-grid {
     display: grid;
@@ -810,6 +717,15 @@ section:last-of-type {
     flex-direction: column;
     gap: 0.3rem;
     padding: 1.15rem 1.25rem;
+    color: var(--text-primary);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.hero-stat-card:hover,
+.hero-stat-card:focus-visible {
+    color: var(--text-primary);
+    text-decoration: none;
+    border-color: var(--text-primary);
 }
 
 .stat-number {
@@ -863,13 +779,11 @@ section:last-of-type {
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease;
 }
 
 .featured-card:hover {
-    border-color: var(--accent-color);
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-2px);
+    border-color: var(--text-primary);
 }
 
 .card-top-bar {
@@ -910,7 +824,6 @@ section:last-of-type {
     margin-bottom: 1.25rem;
     padding: 0.75rem 0.9rem;
     border-left: 3px solid var(--accent-color);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
     background-color: var(--surface-2);
     font-size: 0.84rem;
     line-height: 1.5;
@@ -947,6 +860,7 @@ section:last-of-type {
     --color-calendar-graph-day-L2-bg: #40c463;
     --color-calendar-graph-day-L3-bg: #30a14e;
     --color-calendar-graph-day-L4-bg: #216e39;
+    --calendar-cell-border: rgba(27, 31, 35, 0.08);
     padding: 1.25rem 1.5rem;
     color: var(--text-primary);
     overflow-x: auto;
@@ -965,9 +879,9 @@ section:last-of-type {
 }
 
 .calendar rect.ContributionCalendar-day {
-    shape-rendering: geometricPrecision;
-    rx: 2px;
-    ry: 2px;
+    shape-rendering: crispEdges;
+    stroke: var(--calendar-cell-border);
+    stroke-width: 1px;
     transition: opacity 0.15s ease;
 }
 
@@ -1012,7 +926,8 @@ section:last-of-type {
     display: inline-block;
     width: 10px;
     height: 10px;
-    border-radius: 2px;
+    outline: 1px solid var(--calendar-cell-border);
+    outline-offset: -1px;
 }
 
 .calendar-legend .legend-box[data-level="0"] { background-color: var(--color-calendar-graph-day-bg); }
@@ -1280,6 +1195,20 @@ section:last-of-type {
     color: var(--text-muted);
 }
 
+.research-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.research-link:hover {
+    text-decoration: none;
+}
+
 .research-row.hidden {
     display: none !important;
 }
@@ -1356,9 +1285,7 @@ section:last-of-type {
     display: inline-block;
     width: 8px;
     height: 8px;
-    border-radius: 50%;
     background-color: #2da44e;
-    box-shadow: 0 0 0 2px rgba(45, 164, 78, 0.25);
     animation: statusPulse 2s infinite ease-in-out;
 }
 
@@ -1452,7 +1379,6 @@ section:last-of-type {
     .hero-sticker-img {
         width: 130px;
         height: 130px;
-        border-radius: 18px;
     }
     .hero-stats-grid {
         grid-template-columns: 1fr;
@@ -1535,7 +1461,8 @@ section:last-of-type {
 
 /* GitHub Calendar Dark Mode Overrides */
 [data-theme="dark"] .calendar {
-    --color-calendar-graph-day-bg: #161b22;
+    --color-calendar-graph-day-bg: #262626;
+    --calendar-cell-border: rgba(255, 255, 255, 0.1);
     --color-calendar-graph-day-L1-bg: #0e4429;
     --color-calendar-graph-day-L2-bg: #006d32;
     --color-calendar-graph-day-L3-bg: #26a641;
