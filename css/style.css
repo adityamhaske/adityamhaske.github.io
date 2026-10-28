@@ -1360,18 +1360,27 @@ section:last-of-type {
 }
 
 .footer-nav-list a {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--border-color);
     font-family: var(--font-body);
     font-size: 0.92rem;
     font-weight: 500;
     color: var(--text-primary);
-    transition: color 0.15s ease, transform 0.15s ease;
+    transition: color 0.15s ease;
+}
+
+/* Arrow boxes line up in one column on the right edge. */
+.footer-nav-list .ext-arrow {
+    margin-left: auto;
 }
 
 .footer-nav-list a:hover {
     color: var(--accent-color);
     text-decoration: none;
-    transform: translateX(3px);
 }
 
 .footer-telemetry {
